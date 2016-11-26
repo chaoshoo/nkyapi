@@ -41,7 +41,7 @@ public class RedisService {
 				});
 
 			} catch (Exception e) {
-				LOG.error("删除异常", e);
+				LOG.error("Delete exception", e);
 			}
 		}
 	}
@@ -67,7 +67,7 @@ public class RedisService {
 				});
 
 			} catch (Exception e) {
-				LOG.error("delByReg异常", e);
+				LOG.error("delByRegabnormal", e);
 			}
 		}
 	}
@@ -91,7 +91,7 @@ public class RedisService {
 					break;
 				}
 			} catch (Exception e) {
-				LOG.error("exists异常", e);
+				LOG.error("existsabnormal", e);
 			}
 		}
 
@@ -324,7 +324,7 @@ public class RedisService {
 					}
 				});
 			} catch (Exception e) {
-				LOG.error("添加Object到缓存异常", e);
+				LOG.error("Add toObject到缓存异常", e);
 			}
 		}
 	}
@@ -346,7 +346,7 @@ public class RedisService {
 
 				});
 			} catch (Exception e) {
-				LOG.error("取Object异常", e);
+				LOG.error("takeObjectabnormal", e);
 				obj = "error";
 			}
 		}

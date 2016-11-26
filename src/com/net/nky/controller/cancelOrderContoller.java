@@ -45,7 +45,7 @@ private static final Logger LOGGER = Logger.getLogger(cancelOrderContoller.class
 //			超期未支付，订单状态及流程相关服务
 			try {
 //				String inputStr="{'type':'cancelorder','cancelreason':'test2','operator':'13638631787','orderid':'2002286'}";
-				messageObj.put("cancelreason", "支付超时,系统自动取消");
+				messageObj.put("cancelreason", "Payment timeout,System automatic cancellation");
 				messageObj.put("operator", "SYS");
 				messageObj.put("orderid", orderid);
 				appInterfaceService.cancelorder(messageObj, result);

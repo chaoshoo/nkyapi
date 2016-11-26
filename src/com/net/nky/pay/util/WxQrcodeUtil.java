@@ -41,7 +41,7 @@ public class WxQrcodeUtil {
 			return "";
 		}
 		// 金额转化为分为单位
-		String currency =  amount.replaceAll("\\$|\\￥|\\,", "");  //处理包含, ￥ 或者$的金额  
+		String currency =  amount.replaceAll("\\$|\\￥|\\,", "");  //处理包含, ￥ perhaps$的金额  
         int index = currency.indexOf(".");  
         int length = currency.length();  
         Long amLong = 0l;  

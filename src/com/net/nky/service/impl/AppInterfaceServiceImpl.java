@@ -66,33 +66,33 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 	
 	static String[] format = {"yyyy-MM-dd HH:mm:ss"};
 
-	public static final String MSG_TEL_ERROR = "手机号码不正确";
+	public static final String MSG_TEL_ERROR = "Phone number is not correct";
 
-	public static final String REQ_ERROR = "请求不合法";
+	public static final String REQ_ERROR = "Request is not valid";
 
 	public static final String MSG_REQ_ERROR = REQ_ERROR;
 	
-	public static final String MSG_SEND_ERROR = "短信发送失败";
+	public static final String MSG_SEND_ERROR = "SMS failed";
 	
-	public static final String MSG_SEND_OK = "短信发送成功";
+	public static final String MSG_SEND_OK = "SMS sent";
 	
-	public static final String MSG_CHECK_OK = "验证码验证成功";
+	public static final String MSG_CHECK_OK = "Verification code validation success";
 
-	public static final String MSG_CHECK_ERROR = "验证码验证失败";
+	public static final String MSG_CHECK_ERROR = "Verification code validation failed";
 	
-	public static final String MSG_CHECK_INVALID = "验证码失效";
+	public static final String MSG_CHECK_INVALID = "Verification code expired";
 	
-	public static final String LOGIN_SUCCESS = "登陆成功";
+	public static final String LOGIN_SUCCESS = "Landing success";
 	
-	public static final String LOGIN_FAIL_PASSWORD = " 密码错误";
+	public static final String LOGIN_FAIL_PASSWORD = " Password error";
 	
-	public static final String NO_REGISTER = "未注册";
+	public static final String NO_REGISTER = "unregistered";
 
-	public static final String LOGIN_LACK = "缺少参数";
+	public static final String LOGIN_LACK = "Missing parameter";
 	
-	public static final String OK = "执行成功";
+	public static final String OK = "Implemented";
 	
-	public static final String ERROR = "执行失败";
+	public static final String ERROR = "Execution failed";
 	
 	/**
 	 * APP登录
@@ -220,9 +220,9 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 
 	@Override
 	public void userlogin(JSONObject messageObj, JSONObject result){
-		Object num=messageObj.get("num");//手机号
+		Object num=messageObj.get("num");//Cell number
 		//Object papers_num=messageObj.get("papers_num");//证件号
-		String password=messageObj.getString("password");//密码
+		String password=messageObj.getString("password");//Password
 		Object android_tv_channel_id=messageObj.get("android_tv_channel_id");//证件号
 		
 		if((num==null||"".equals(num.toString())))
@@ -319,7 +319,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			if(rec != null)
 			{
 				result.put("code", "0");
-				result.put("message", "您已经注册过了，请直接登录！");
+				result.put("message", "You have already registered.，Please log in directly！");
 				return ;
 			}
 			
@@ -332,13 +332,13 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 							ill_history,gm,qq,wxopenid,android_tv_token_id,android_tv_channel_id});
 			
 			result.put("code", "1");
-			result.put("message", "注册成功");	
+			result.put("message", "Registered");	
 			
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 			result.put("code", "0");
-			result.put("message", "注册失败！");
+			result.put("message", "Registeration failed！");
 		}
 		
 		
@@ -674,7 +674,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 		}
 		
 		result.put("code", "1");
-		result.put("message", "咨询提交成功");	
+		result.put("message", "Advisory submission success");	
 	}
 
 	@Override
@@ -689,7 +689,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				new Object[]{answer_code,vip_questions_id,answer_content});
 		
 		result.put("code", "1");
-		result.put("message", "留言提交成功");
+		result.put("message", "Message submitted");
 	}
 	
 	
@@ -717,7 +717,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 		
 		
 		result.put("code", "1");
-		result.put("message", "远程咨询预约提交成功");	
+		result.put("message", "Remote consultation appointment submitted successfully");	
 		
 	}
 	
@@ -729,7 +729,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				new Object[]{remote_code});
 		
 		result.put("code", "1");
-		result.put("message", "远程咨询取消成功");	
+		result.put("message", "Remote consultation cancelled");	
 		
 	}
 
@@ -746,7 +746,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				new Object[]{remote_inspect_code,vip_code,content,score});
 		
 		result.put("code", "1");
-		result.put("message", "远程咨询评分提交成功");	
+		result.put("message", "Remote consultation comment submitted");	
 	}
 
 	@Override
@@ -761,7 +761,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				new Object[]{remote_inspect_code,vip_or_doctor,des});
 		
 		result.put("code", "1");
-		result.put("message", "远程咨询轨迹提交成功");
+		result.put("message", "Remote counseling track submission success");
 		
 	}
 	
@@ -868,9 +868,9 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				result.put("inspect_is_normal", inspect_is_normal);
 				
 			} catch (Exception e) {
-				LOG.error( "数据解析异常",e);
+				LOG.error( "Data parsing exception",e);
 				result.put("flag", "fail");
-				result.put("remark", "数据解析异常");
+				result.put("remark", "Data parsing exception");
 			}
 			
 			
@@ -902,7 +902,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			} catch (Exception e) {
 				// TODO: handle exception
 				result.put("flag", "fail");
-				result.put("remark", "异常");
+				result.put("remark", "abnormal");
 			}
 		}
 
@@ -923,7 +923,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			} catch (Exception e) {
 				// TODO: handle exception
 				result.put("flag", "fail");
-				result.put("remark", "异常");
+				result.put("remark", "abnormal");
 			}
 		}
 
@@ -969,7 +969,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			}
 			
 			result.put("code", "1");
-			result.put("message", "成员绑定成功");
+			result.put("message", "Member binding done");
 			
 		}
 		
@@ -993,13 +993,13 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 					Db.update("delete   from vip_family  where vip_code = '"+bind_vip_code+"'  and family_account='"+vip_card+"'");
 				}
 				result.put("code", "1");
-				result.put("message", "解绑成功");	
+				result.put("message", "Tie success");	
 				
 			}catch(Exception e)
 			{
 				e.printStackTrace();
 				result.put("code", "0");
-				result.put("message", "解绑失败！");
+				result.put("message", "Bind failure！");
 			}
 		}
 
@@ -1464,12 +1464,12 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			String partscheduleid= (String) messageObj.getString("partscheduleid");
 			
 			
-			String certtypeno=(String) messageObj.getString("certtypeno");//证件类型
+			String certtypeno=(String) messageObj.getString("certtypeno");//Id type
 			String idcard=(String) messageObj.getString("idcard");//证件号 加密
-			String patientname=(String) messageObj.getString("patientname");//病人姓名  加密
-			String patientsex=(String) messageObj.getString("patientsex");//病人性别（1：男；2：女）
-			String patientbirthday=(String) messageObj.getString("patientbirthday");//病人出生日期，格式：2015-01-01
-			String contactphone=(String) messageObj.getString("contactphone");//联系电话 加密
+			String patientname=(String) messageObj.getString("patientname");//Patient name  加密
+			String patientsex=(String) messageObj.getString("patientsex");//病人性别（1：male；2：female）
+			String patientbirthday=(String) messageObj.getString("patientbirthday");//病人出生日期，format：2015-01-01
+			String contactphone=(String) messageObj.getString("contactphone");//Contact number 加密
 			String familyaddress=(String) messageObj.getString("familyaddress");//家庭地址 加密
 			String familyaddressInsert=(String) messageObj.getString("familyaddress");//家庭地址 加密
 			
@@ -1544,7 +1544,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				if("".equals(orderfee)){
 					orderfee="0";
 				}
-				String status="1";//1  锁号成功  2 确认成功  3 支付成功 4 支付失败 5 取消订单
+				String status="1";//1  Locked success  2 Confirmed  3 Payed 4 Payment failed 5 Cancel order
 //				是否需要扣费（1:是;0:否）
 //				if("0".equals(ispay)){
 //					status="3";
@@ -1756,7 +1756,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			if(orderid==null || "".equals(orderid.toString()))
 			{
 				result.put("code", "1");
-				result.put("message", "orderId不能为空");
+				result.put("message", "orderIdCan not be empty");
 				return;
 			}
 			TopayServlet.getPackage(orderid.toString(),result);
@@ -1765,8 +1765,8 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 		@Override
 		public void doctorlogin(JSONObject messageObj, JSONObject result) {
 			// TODO Auto-generated method stub
-			Object tel=messageObj.get("tel");//手机号
-			String password=messageObj.getString("password");//密码
+			Object tel=messageObj.get("tel");//Cell number
+			String password=messageObj.getString("password");//Password
 			Object android_tv_channel_id=messageObj.get("android_tv_channel_id");//证件号
 			
 			if((tel==null||"".equals(tel.toString())))
@@ -1875,7 +1875,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			} catch (Exception e) {
 				e.printStackTrace();
 				result.put("code",0);
-				result.put("msg", "uid必须是Long类型");
+				result.put("msg", "uidMust beLongtype");
 				return;
 			} 
 			
@@ -1911,7 +1911,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				e.printStackTrace();
 			}
 			result.put("code", 0);
-			result.put("msg", "token获取失败");
+			result.put("msg", "tokenAcquisition failed");
 		}
 
 		@Override
@@ -1982,7 +1982,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 			String cid = messageObj.getString("cid");
 			if (cid == null || "".equals(cid)) {
 				result.put("code",0);
-				result.put("msg", "cid不能为空");
+				result.put("msg", "cidCan not be empty");
 				return;
 			}
 			
@@ -2009,7 +2009,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 					JSONObject resultJson = JSONObject.fromObject(EntityUtils.toString(response.getEntity(), "utf-8"));
 					if ("200".equals(resultJson.getString("code"))) {
 						result.put("code", 1);
-						result.put("token", "删除成功");
+						result.put("token", "Deleted");
 						return;
 					}
 				}
@@ -2017,7 +2017,7 @@ public class AppInterfaceServiceImpl implements AppInterfaceService {
 				e.printStackTrace();
 			}
 			result.put("code", 0);
-			result.put("msg", "删除失败");
+			result.put("msg", "Delete failed");
 		}
 		
 		

@@ -88,7 +88,7 @@ public class PushUtil {
 				return true;
 			}
 		} catch (Exception e) {
-			LOG.error("添加推送Tag异常", e);
+			LOG.error("添加推送Tagabnormal", e);
 		}
 		return false;
 	}
@@ -338,7 +338,7 @@ public class PushUtil {
 		map.put("message", msg);
 		String token = ServiceConstants.WEIXIN_MD5KEY+openids+msg;		
 		map.put("token", MD5Util.MD5(token, "utf-8"));
-		String str = "false:推送异常";
+		String str = "false:Push exception";
 		try {
 			LOG.info("send wx map:::"+map);
 			str = HttpClient.httpPost(ServiceConstants.WEIXIN_PUSH, map);

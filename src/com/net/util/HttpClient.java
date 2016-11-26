@@ -149,7 +149,7 @@ public class HttpClient {
 		      int statusCode = httpClient.executeMethod(getMethod);
 		      /* 4 判断访问的状态码 */
 		      if (statusCode != HttpStatus.SC_OK) {
-		        System.err.println("请求出错: "+ getMethod.getStatusLine());
+		        System.err.println("Request error: "+ getMethod.getStatusLine());
 		      }
 		      /* 5 处理 HTTP 响应内容 */
 		      // HTTP响应头部信息，这里简单打印
@@ -214,7 +214,7 @@ public class HttpClient {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new Exception("发送 POST 请求出现异常 !" + e);
+				throw new Exception("Send POST 请求出现异常 !" + e);
 			}
 			// 使用finally块来关闭输出流、输入流
 			finally {
@@ -228,7 +228,7 @@ public class HttpClient {
 
 				} catch (IOException ex) {
 					ex.printStackTrace();
-					throw new Exception("发送 POST 请求出现异常 !" + ex);
+					throw new Exception("Send POST 请求出现异常 !" + ex);
 				}
 			}
 			return result;
@@ -238,7 +238,7 @@ public class HttpClient {
 	 public static void main(String[] args) throws Exception {
 		String json=doGet("http://27.17.40.149:9000/hy_ghservice/centergh/jiami?miwen=abfdah", "utf-8");
 		System.out.println(json);
-		json=json.substring(json.indexOf("是\"")+4, json.length()-2);
+		json=json.substring(json.indexOf("yes\"")+4, json.length()-2);
 		System.out.println(json);
 		
 	}

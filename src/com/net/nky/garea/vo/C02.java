@@ -8,7 +8,7 @@ package com.net.nky.garea.vo;
  */
 public class C02 {
 
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    时间格式字 符串
 
 	private Float glu;
 

@@ -32,7 +32,7 @@ public class RemoteRefuseServiceImpl implements RemoteRefuseService {
 		List<Record> list =  Db.find(sql,sdf.format(start),sdf.format(end));
 		if(!list.isEmpty()){
 			for (Record r: list) {				
-				saveMessage(r.get("did")+"", r.get("id")+"", "你预约"+r.get("name")+"时间"+r.get("yutime")+"快到了，请做好准备。");
+				saveMessage(r.get("did")+"", r.get("id")+"", "Your reservation"+r.get("name")+"time"+r.get("yutime")+"It's almost there，Please get ready。");
 			}
 		}
 		return "ok";
@@ -43,7 +43,7 @@ public class RemoteRefuseServiceImpl implements RemoteRefuseService {
 		try {
 			Record r1 = new Record();
 			//msg_type 为1 表示文本
-			r1.set("msg_type", "1").set("creator", sender).set("title", "提示").set("content", content)
+			r1.set("msg_type", "1").set("creator", sender).set("title", "Prompt").set("content", content)
 			.set("create_time", new Date());
 			boolean flag = Db.save("message", r1);
 			if(flag){

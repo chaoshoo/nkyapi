@@ -11,7 +11,7 @@ public class Temperature {
 
 	private String detectDate;
 
-	private Float temperature;//体温 *10
+	private Float temperature;//temperature *10
 
 	public String getDetectDate() {
 		return detectDate;

@@ -93,7 +93,7 @@ public class GareaService {
 		Log.info("rsq [info]: name:{}, basereq :{}", name,req);//pid 421125199210164314, did 420106197702160011
 		try{
 			if (StringUtils.isEmpty(name) || StringUtils.isEmpty(deviceId) || (StringUtils.isEmpty(pIdCard) && StringUtils.isEmpty(dIdCard))) {
-				Log.info("rsq [info]: {},{} 数据不合法，不保存", name, req);
+				Log.info("rsq [info]: {},{} Data is not valid，不保存", name, req);
 				return new ResultDto(false);
 			}
 			
@@ -120,7 +120,7 @@ public class GareaService {
 								getIdCardSex(pIdCard), address, address, getIdCardBirthDay(pIdCard), getIdCardAge(pIdCard),
 								phone });
 				if (count > 0) {
-					Log.info("rsq [info]: {},{} 保存成功", name, req);
+					Log.info("rsq [info]: {},{} Save success", name, req);
 					return new ResultDto();//用户已经注册 , true
 				}
 			} else {
@@ -129,7 +129,7 @@ public class GareaService {
 		}catch(Exception e){
 			Log.error("一体机存入居民信息异常",e);
 		}
-		Log.warn("rsq [info]: {},{} 保存失败", name, req);
+		Log.warn("rsq [info]: {},{} Save failed", name, req);
 		return new ResultDto(false);//用户已经注册 , true 
 	}
 
@@ -209,7 +209,7 @@ public class GareaService {
 					}
 				}
 			}catch(Exception e){
-				sb.append("解析异常. ");
+				sb.append("Analytical anomaly. ");
 			}
 			Log.info("{}心电图数据结果:{}",dIdCard,sb.toString());	
 			
@@ -263,7 +263,7 @@ public class GareaService {
 		//{"beforeOrAtter":5,"detectDate":"2016-09-21 16:41:53","glu":26.2}
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C02]: 血糖:{}, basereq :{}", gluStr,req);
+		Log.info("rsq [C02]: blood sugar:{}, basereq :{}", gluStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -273,11 +273,11 @@ public class GareaService {
 			messageObj.put("inspect_code", "C02");
 			messageObj.put("type", "measure");
 			if(data.getType().equals("GLU0")){
-				messageObj.put("GLU0", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//随机血糖
+				messageObj.put("GLU0", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//Random blood glucose
 			}else if(data.getType().equals("GLU1")){
-				messageObj.put("GLU1", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//餐前血糖
+				messageObj.put("GLU1", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//Pre-meal blood glucose
 			}else if(data.getType().equals("GLU2")){
-				messageObj.put("GLU2", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP)); //餐后血糖
+				messageObj.put("GLU2", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP)); //Postprandial blood glucose
 			}else {
 				rsp.setSuccess(false);
 				Log.error("一体机存入血糖信息不合法");
@@ -332,7 +332,7 @@ public class GareaService {
 		//{"detectDate":"2016-09-21 15:54:54","nibpDia":77,"nibpMea":90,"nibpSys":126,"pr":99}
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C01]: 血压:{}, basereq :{}", nibpStr,req);
+		Log.info("rsq [C01]: blood pressure:{}, basereq :{}", nibpStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -341,8 +341,8 @@ public class GareaService {
 			JSONObject messageObj = new JSONObject();
 			messageObj.put("inspect_code", "C01");
 			messageObj.put("type", "measure");
-			messageObj.put("SYS", data.getNibpSys());//收缩压
-			messageObj.put("DIA", data.getNibpDia());//舒张压
+			messageObj.put("SYS", data.getNibpSys());//systolic pressure
+			messageObj.put("DIA", data.getNibpDia());//diastolic pressure
 			messageObj.put("PR", data.getPr()); //"nibpDia":77,"nibpMea":90,"nibpSys":126,"pr":99
 			messageObj.put("device_sn",deviceId);
 			messageObj.put("card_code", pIdCard);
@@ -374,7 +374,7 @@ public class GareaService {
 			@FormParam("pIdCard") String pIdCard, @FormParam("dIdCard") String dIdCard) throws Exception {
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [SPO2]: 血氧:{}, basereq :{}", spo2Str,req);//pid 421125199210164314, did 420106197702160011
+		Log.info("rsq [SPO2]: Oxygen:{}, basereq :{}", spo2Str,req);//pid 421125199210164314, did 420106197702160011
 		//bmiStr {"detectDate":"2016-09-21 11:14:04","height":170,"weight":60}
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
@@ -457,7 +457,7 @@ public class GareaService {
 		//rsq [C06]: 尿常规:{"bil":0,"bld":1,"detectDate":"2016-09-22 10:22:28","glu":0,"ket":0,"leu":0,"nit":0,"ph":6,"pro":2,"sg":1.025,"ubg":0,"vc":3}, 
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C06]: 尿常规:{}, basereq :{}", urineStr,req);
+		Log.info("rsq [C06]: Urine routine:{}, basereq :{}", urineStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -592,7 +592,7 @@ public class GareaService {
 			conf_pros.load(in);
 			localFilePath = conf_pros.getProperty("local_pic_path").trim();
 		} catch (Exception e) {
-			LoggerFactory.getLogger("GareaServiceStatic").error("读取配置文件conf.properties出错了 ", e);
+			LoggerFactory.getLogger("GareaServiceStatic").error("读取配置文件conf.propertiesError ", e);
 		}
 	}
 
@@ -642,7 +642,7 @@ public class GareaService {
 				return true;
 			}else{
 				int count = Db.update("insert into device (device_id,device_type,sn,create_time,remark) values(?,?,?,NOW(),?)",
-							new Object[] { deviceId, "GAREA",deviceId,"盖睿一体机" }); 
+							new Object[] { deviceId, "GAREA",deviceId,"Gairui integrated machine" }); 
 				
 				if (count > 0) {
 					Log.info("盖瑞一体机设备保存成功:{}", deviceId);
