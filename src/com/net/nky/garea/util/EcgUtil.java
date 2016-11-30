@@ -50,7 +50,7 @@ public class EcgUtil {
 		case 12503:
 			return "Artial Fluttrt merged Premature Ventricular  Contraction ( PVC )or Intraventricular Aberrant Conduction";
 		case 12505:
-			return ""Atrial Flutter  intermittent"";
+			return "Atrial Flutter  intermittent";
 		case 1300:
 			return "junctional rhythm";
 		case 1320:
@@ -397,7 +397,7 @@ public class EcgUtil {
     		return "1250";
     	}else if(result.equals("Artial Fluttrt merged Premature Ventricular  Contraction ( PVC )or Intraventricular Aberrant Conduction")){
     		return "12503";
-    	}else if(result.equals(""Atrial Flutter  intermittent"")){
+    	}else if(result.equals("Atrial Flutter  intermittent")){
     		return "12505";
     	}else if(result.equals("junctional rhythm")){
     		return "1300";
