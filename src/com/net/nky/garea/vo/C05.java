@@ -6,7 +6,7 @@ package com.net.nky.garea.vo;
  * @version 2016年9月21日
  */
 public class C05 {
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    时间格式字 符串
 	private Integer pr;// 
 	private Integer spo2;// 
 	//{"detectDate":"2016-09-21 15:54:54","pr":77,"spo2":99}

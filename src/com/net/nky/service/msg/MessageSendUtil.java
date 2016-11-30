@@ -35,7 +35,7 @@ public class MessageSendUtil {
 	 *  <p>示例:System.out.println(sendRegistMessage("13367241859") );
 	 */
 	public static MessageResultVo sendRegistMessage(String tel) {
-		MessageResultVo vo = new MessageResultVo(false, getRandom6());//"短信发送成功"
+		MessageResultVo vo = new MessageResultVo(false, getRandom6());//"SMS sent"
 		try {
 			//对1分钟内发出多条，和一条内超过指定条数处理
 			if (!MessageCacheSingleton.getSingleton().getPhonegap(tel)) {
@@ -61,7 +61,7 @@ public class MessageSendUtil {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
 			LOG.error(tel+"短信发送异常,API调用异常:{}", e);
@@ -110,7 +110,7 @@ public class MessageSendUtil {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
 			LOG.error(tel+"短信发送异常,API调用异常:{}",e);
@@ -127,7 +127,7 @@ public class MessageSendUtil {
 		MessageResultVo vo = new MessageResultVo(false, getRandom6());
 		try {
 			AlibabaAliqinFcSmsNumSendRequest req = MessageMetaData.getRequest(tel);
-			req.setSmsFreeSignName("健康管理服务平台");
+			req.setSmsFreeSignName("Health management service platform");
 			String reqparam  = "{code:'" + vo.getVerifycode() + "',product:'" + MessageMetaData.SIGN + "'"+
 					",hospital:'" + hospital + "'"+ 
 					",depart:'" + depart + "'"+ 
@@ -145,7 +145,7 @@ public class MessageSendUtil {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
 			LOG.error(tel+"短信发送异常,API调用异常:{}",e);

@@ -46,7 +46,7 @@ public class PayController {
 		String orderfee =orderRecord.getStr("orderfee");
 		 //扫码支付
 	    WxPayDto tpWxPay1 = new WxPayDto();
-	    tpWxPay1.setBody("挂号费");
+	    tpWxPay1.setBody("Registration fee");
 	    tpWxPay1.setOrderId(WxQrcodeUtil.getNonceStr());
 	    tpWxPay1.setSpbillCreateIp("127.0.0.1");
 	    tpWxPay1.setTotalFee(orderfee);

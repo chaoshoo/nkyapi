@@ -21,13 +21,13 @@ import net.sf.json.JSONObject;
 
 public class TopayServlet {
 	public static void getPackage(String orderNo, JSONObject result) {
-		String goods_name = "挂号费";
+		String goods_name = "Registration fee";
 		String body = goods_name;
 		Record orderRecord = Db.findFirst(
 				"select t.orderfee,s.wxopenid,s.wx_code from vip_reg t,t_vip s where TIMESTAMPDIFF(SECOND,t.create_time,NOW()) <(15*60) and s.vip_code=t.vip_code and t.orderId=?", orderNo);
 		if(orderRecord==null||orderRecord.getStr("wxopenid")==null||"".equals(orderRecord.getStr("wxopenid"))){
 			result.put("code", "1");
-			result.put("message", "挂号订单已超时");
+			result.put("message", "Registered order timeout");
 			return;
 		}
 		String orderfee = orderRecord.getStr("orderfee");
@@ -123,7 +123,7 @@ public class TopayServlet {
 			prepay_id = GetWxOrderno.getPayNo(createOrderURL, xml);
 			if (prepay_id.equals("")) {
 				result.put("code", "1");
-				result.put("message", "预支付失败");
+				result.put("message", "Pre payment failed");
 			}
 		} catch (Exception e1) {
 			e1.printStackTrace();

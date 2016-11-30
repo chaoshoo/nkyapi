@@ -75,7 +75,7 @@ public class PushMessageThread implements Runnable {
 					}
 				}
 			}else{
-				Log.debug("推消息-没有需要推送的消息");
+				Log.debug("Push messages-没有需要推送的消息");
 			}
 			
 		}

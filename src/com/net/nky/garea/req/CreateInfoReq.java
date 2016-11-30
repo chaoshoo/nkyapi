@@ -12,11 +12,11 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 public class CreateInfoReq extends BaseReq {
 
 	private String deviceId;// 设备编号 50 位以内字符
-	private Integer userType;// 用户类型 0 ：居民用户  1 ：医生
-	private String name;// 姓名 创建信息对应的姓名
-	private String address;// 地址 身份证 上 住址
+	private Integer userType;// 用户类型 0 ：居民用户  1 ：Doctor
+	private String name;// Name 创建信息对应的Name
+	private String address;// address ID 上 住址
 	private String nativeplace;//民族 身份证上 民族
-	private String phone;// 电话号码
+	private String phone;// Phone number
 	private InputStream file;
 
 	public String getDeviceId() {

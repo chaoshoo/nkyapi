@@ -6,7 +6,7 @@ public class DeviceInfo {
 
 	private String deviceId; //设备编号
 	private String deviceName;//设备名称
-	private String deviceModel;//设备类型 1: gp102 	2:gp102plus   3:gt1000
+	private String deviceModel;//Equipment type 1: gp102 	2:gp102plus   3:gt1000
 
 	public String getDeviceId() {
 		return deviceId;

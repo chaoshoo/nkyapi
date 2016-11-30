@@ -3,7 +3,7 @@ package com.net.nky.garea.vo;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 public class Ecg {
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    时间格式字 符串
 	private Integer leadType;//2  导联类型  1:5 导联  2:12 导联
 	private Integer type;//1    心电类型   1: 急诊 2: 门诊 3: 住院  4: 体检
 	private String params;//,"94;64;91;36;164;122;336;420;1485;-1328;2815;1;102.0"

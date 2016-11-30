@@ -7,7 +7,7 @@ package com.net.nky.garea.vo;
  */
 public class C06 {
 
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    时间格式字 符串
 	private Integer leu;//白细胞
 	private Integer nit;//亚硝酸盐
 	private Integer ubg;//尿胆原

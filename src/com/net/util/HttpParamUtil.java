@@ -125,7 +125,7 @@ public class HttpParamUtil {
 	public static String getCiphByString(String param) throws Exception{
 		String url =ServiceConstants.CIPHERURL+param;
 		String ciph =  HttpClient.doGet(url, "utf-8");
-		return ciph.substring(ciph.indexOf("是\"")+4, ciph.length()-2);
+		return ciph.substring(ciph.indexOf("yes\"")+4, ciph.length()-2);
 	}
 	
 	

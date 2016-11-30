@@ -67,7 +67,7 @@ public class AppInterfaceController {
 			} catch (IOException e1) {
 				LOG.error("关闭输出流异常.", e1);
 			}
-			LOG.error("IO异常.", e);
+			LOG.error("IOabnormal.", e);
 		}
 	}
 

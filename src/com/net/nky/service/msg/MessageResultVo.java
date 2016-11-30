@@ -13,7 +13,7 @@ public class MessageResultVo {
 
 	private String verifycode; //发送成功的验证吗
 
-	private String message;//发送失败的原因，和发送成功时为：短信发送成功
+	private String message;//发送失败的原因，和发送成功时为：SMS sent
 
 	private MessageResultVo() {
 

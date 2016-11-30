@@ -56,11 +56,11 @@ public class VipInspectConfigController {
 	 * {
 	"C01": {
 	    "dicName": "C01",
-	    "dicValue": "血压",
+	    "dicValue": "blood pressure",
 	    "inspectMap": {
 	        "PR": {
 	            "code": "PR",
-	            "name": "脉率",
+	            "name": "Pulse rate",
 	            "isfz": null,
 	            "unit": "bpm",
 	            "inspectCode": "C01",
@@ -72,7 +72,7 @@ public class VipInspectConfigController {
 	        },
 	        "SYS": {
 	            "code": "SYS",
-	            "name": "收缩压",
+	            "name": "Systolic Blood Pressure",
 	            "isfz": null,
 	            "unit": "mmHg",
 	            "inspectCode": "C01",
@@ -109,7 +109,7 @@ public class VipInspectConfigController {
 	        },
 	        "DIA": {
 	            "code": "DIA",
-	            "name": "舒张压",
+	            "name": "Diastolic Blood Pressure",
 	            "isfz": null,
 	            "unit": "mmHg",
 	            "inspectCode": "C01",
@@ -123,11 +123,11 @@ public class VipInspectConfigController {
 	},
 	"C02": {
 	    "dicName": "C02",
-	    "dicValue": "血糖",
+	    "dicValue": "blood sugar",
 	    "inspectMap": {
 	        "GLU2": {
 	            "code": "GLU2",
-	            "name": "餐后血糖",
+	            "name": "Postprandial blood glucose",
 	            "isfz": null,
 	            "unit": "mmol/L",
 	            "inspectCode": "C02",
@@ -139,7 +139,7 @@ public class VipInspectConfigController {
 	        },
 	        "GLU1": {
 	            "code": "GLU1",
-	            "name": "餐前血糖",
+	            "name": "Pre-meal blood glucose",
 	            "isfz": null,
 	            "unit": "mmol/L",
 	            "inspectCode": "C02",
@@ -151,7 +151,7 @@ public class VipInspectConfigController {
 	        },
 	        "GLU0": {
 	            "code": "GLU0",
-	            "name": "随机血糖",
+	            "name": "Random blood glucose",
 	            "isfz": null,
 	            "unit": "mmol/L",
 	            "inspectCode": "C02",
@@ -175,11 +175,11 @@ public class VipInspectConfigController {
 	 * 获取所有某一个检测指标代码的数据 C01下面的指标
 	 * {
 	"dicName": "C01",
-	"dicValue": "血压",
+	"dicValue": "blood pressure",
 	"inspectMap": {
 	    "PR": {
 	        "code": "PR",
-	        "name": "脉率",
+	        "name": "Pulse rate",
 	        "isfz": null,
 	        "unit": "bpm",
 	        "inspectCode": "C01",
@@ -191,7 +191,7 @@ public class VipInspectConfigController {
 	    },
 	    "SYS": {
 	        "code": "SYS",
-	        "name": "收缩压",
+	        "name": "Systolic Blood Pressure",
 	        "isfz": null,
 	        "unit": "mmHg",
 	        "inspectCode": "C01",
@@ -228,7 +228,7 @@ public class VipInspectConfigController {
 	    },
 	    "DIA": {
 	        "code": "DIA",
-	        "name": "舒张压",
+	        "name": "Diastolic Blood Pressure",
 	        "isfz": null,
 	        "unit": "mmHg",
 	        "inspectCode": "C01",
@@ -251,7 +251,7 @@ public class VipInspectConfigController {
 	 * 获取所有某一个检测指标代码的数据 C01下面的指标
 	 * {
 	"code": "SYS",
-	"name": "收缩压",
+	"name": "Systolic Blood Pressure",
 	"isfz": null,
 	"unit": "mmHg",
 	"inspectCode": "C01",
