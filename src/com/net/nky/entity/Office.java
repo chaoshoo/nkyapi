@@ -5,9 +5,9 @@ import java.util.Date;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
- * office 科室表.
+ * office Department table.
  * @author Ken
- * @version 2016年8月24日
+ * @version 2016year8month24day
  */
 public class Office {
 	@JsonIgnore

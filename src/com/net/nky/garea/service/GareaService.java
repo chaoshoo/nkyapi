@@ -46,9 +46,9 @@ import com.sun.jersey.multipart.FormDataParam;
 import net.sf.json.JSONObject;
 
 /**
- * 盖睿服务类.
+ * Core service class.
  * @author Ken
- * @version 2016年9月20日
+ * @version 2016year9month20day
  */
 @Component
 @Path("/api")
@@ -58,21 +58,21 @@ public class GareaService {
 	protected AppInterfaceService appInterfaceService;
 
 	/**
-	 * 3.1.1 设备上传保存个人或者医生
-	 * @param appCode 系统代码
-	 * @param signData 签名数据
-	 * @param sign	签名信息
+	 * 3.1.1 Device upload to save a person or doctor
+	 * @param appCode System code
+	 * @param signData Signature data
+	 * @param sign	Signature information
 	 * 
-	 * @param custCode 企业客户编码 4 位字符
-	 * @param deviceId  设备编号 50 位以内字符
-	 * @param userType  用户类型 0：居民用户 1：医生
-	 * @param pIdCard		居民用户身份证号  创建医生时可为空		允许为空
-	 * @param dIdCard   医生身份证号
-	 * @param name 创建信息对应的姓名
-	 * @param address 身份证上住址
-	 * @param nativeplace	身份证上民族
-	 * @param phone	手机号码
-	 * @param inputStream	身份证头像
+	 * @param custCode Enterprise customer code 4 Bit character
+	 * @param deviceId  Equipment number 50 Bit less than character
+	 * @param userType  customer type 0：Resident users 1：Doctor
+	 * @param pIdCard		Resident identity card number  When you create a doctor, you can be empty.		Allow for null
+	 * @param dIdCard   Doctor ID card number
+	 * @param name Create the name of the corresponding information
+	 * @param address ID card
+	 * @param nativeplace	National identity card
+	 * @param phone	Phone number
+	 * @param inputStream	ID card
 	 * @param imageDetail
 	 * @return
 	 * @throws Exception
@@ -93,17 +93,17 @@ public class GareaService {
 		Log.info("rsq [info]: name:{}, basereq :{}", name,req);//pid 421125199210164314, did 420106197702160011
 		try{
 			if (StringUtils.isEmpty(name) || StringUtils.isEmpty(deviceId) || (StringUtils.isEmpty(pIdCard) && StringUtils.isEmpty(dIdCard))) {
-				Log.info("rsq [info]: {},{} 数据不合法，不保存", name, req);
+				Log.info("rsq [info]: {},{} Data is not valid，Not save", name, req);
 				return new ResultDto(false);
 			}
 			
-			checkInsertDevice(deviceId);//保存一体机设备
+			checkInsertDevice(deviceId);//Integrated machine equipment
 
 			//居民用户身份证
 			if (StringUtils.isNotEmpty(pIdCard)) {
 				Record vipIds = Db.findFirst("select id from t_vip where  papers_num=? ", new Object[] { pIdCard });
 				if (vipIds != null) {
-					return new ResultDto();//用户已经注册 , true
+					return new ResultDto();//User is already registered , true
 				}
 				String headPicUrl = pIdCard + ".png";
 				if (StringUtils.isEmpty(localFilePath)
@@ -120,21 +120,21 @@ public class GareaService {
 								getIdCardSex(pIdCard), address, address, getIdCardBirthDay(pIdCard), getIdCardAge(pIdCard),
 								phone });
 				if (count > 0) {
-					Log.info("rsq [info]: {},{} 保存成功", name, req);
-					return new ResultDto();//用户已经注册 , true
+					Log.info("rsq [info]: {},{} Save success", name, req);
+					return new ResultDto();//User is already registered , true
 				}
 			} else {
 				//doctor ,现在不需要搞
 			}
 		}catch(Exception e){
-			Log.error("一体机存入居民信息异常",e);
+			Log.error("Integrated machine into the abnormal information",e);
 		}
-		Log.warn("rsq [info]: {},{} 保存失败", name, req);
-		return new ResultDto(false);//用户已经注册 , true 
+		Log.warn("rsq [info]: {},{} Save failed", name, req);
+		return new ResultDto(false);//User is already registered , true 
 	}
 
 	/**
-	 * 3.2.1  体重指数接口
+	 * 3.2.1  Body mass index interface
 	 */
 	@POST
 	@Path("/dt/bmi/create")
@@ -163,12 +163,12 @@ public class GareaService {
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
 			//体质指数（BMI）=体重（kg）÷身高^2（m） EX：70kg÷（1.75×1.75）=22.86
-			Log.info("一体机存入BMI信息结果：{}",result);
+			Log.info("Integrated machine depositBMIInformation result：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入BMI信息异常",e);
+			Log.error("Integrated machine depositBMIAbnormal information",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -176,7 +176,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 3.2.2 心电数据上传
+	 * 3.2.2 ECG data upload
 	 */
 	@POST
 	@Path("/dt/ecgManage/create")
@@ -209,9 +209,9 @@ public class GareaService {
 					}
 				}
 			}catch(Exception e){
-				sb.append("解析异常. ");
+				sb.append("Analytical anomaly. ");
 			}
-			Log.info("{}心电图数据结果:{}",dIdCard,sb.toString());	
+			Log.info("{}ECG data results:{}",dIdCard,sb.toString());	
 			
 			try{
 				StringBuilder sqlBuilder = new StringBuilder();
@@ -223,34 +223,34 @@ public class GareaService {
 						ecg.getParams(),ecg.getConfig().getHighPassFilter(),ecg.getConfig().getLowPassFilter(),ecg.getConfig().getNotchFilter(),
 						ecg.getRepBeat().getDomLeadLength(),ecg.getRepBeat().getpEnd(),ecg.getRepBeat().getpStart(),ecg.getRepBeat().getQrsEnd(),
 						ecg.getRepBeat().getQrsStart(),ecg.getRepBeat().gettEnd(),ecg.getData(),ecg.getRepBeat().getDomData(),sb.toString()});
-				Log.info("写入心电图数据详情:{}",count);
+				Log.info("Write ECG data:{}",count);
 				if (count > 0) {
 					return new ResultDto(); 
 				}
 				//com.jfinal.plugin.activerecord.ActiveRecordException: java.sql.SQLException: Parameter index out of range (18 > number of parameters, which is 17).
 			}catch(Exception e){
 				//Data truncation: Data too long for column 'data' at row 1
-				Log.error("写入心电图数据详情出错，现只写入简单的检查数据:",e);
+				Log.error("Error writing ECG data details，Now only write simple check data:",e);
 				StringBuilder sqlBuilder = new StringBuilder();
 				sqlBuilder.append("INSERT INTO vip_inspect_data_ecg(card_code,inspect_code,device_sn,create_time,inspect_time,analyzeResult,leadType,type,data,analyzeResultStr) ");
 				sqlBuilder.append("VALUES (?,?,?,now(),?,?,?,?,?,?)");
 				
 				int count = Db.update(sqlBuilder.toString(),new Object[]{pIdCard,"C07",deviceId, ecg.getDetectDate(),ecg.getAnalyzeResult(),ecg.getLeadType(),ecg.getType(),
 						ecg.getData(),sb.toString()});
-				Log.info("写入心电图数据简单数据:{}",count);
+				Log.info("Write ECG data simple data:{}",count);
 				if (count > 0) {
 					return new ResultDto(); 
 				}
 			} 
 		}catch(Exception e){
-			Log.error("一体机存入心电图信息异常",e);
+			Log.error("One machine stored ECG information anomaly",e);
 		}
 		Log.info("rsp : " + rsp);
 		return rsp;
 	}
 
 	/**
-	 * 3.2.3 保存血糖数据
+	 * 3.2.3 Preserve blood glucose data
 	 */
 	@POST
 	@Path("/dt/glu/create")
@@ -263,7 +263,7 @@ public class GareaService {
 		//{"beforeOrAtter":5,"detectDate":"2016-09-21 16:41:53","glu":26.2}
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C02]: 血糖:{}, basereq :{}", gluStr,req);
+		Log.info("rsq [C02]: blood sugar:{}, basereq :{}", gluStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -273,14 +273,14 @@ public class GareaService {
 			messageObj.put("inspect_code", "C02");
 			messageObj.put("type", "measure");
 			if(data.getType().equals("GLU0")){
-				messageObj.put("GLU0", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//随机血糖
+				messageObj.put("GLU0", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//Random blood glucose
 			}else if(data.getType().equals("GLU1")){
-				messageObj.put("GLU1", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//餐前血糖
+				messageObj.put("GLU1", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP));//Pre-meal blood glucose
 			}else if(data.getType().equals("GLU2")){
-				messageObj.put("GLU2", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP)); //餐后血糖
+				messageObj.put("GLU2", new BigDecimal(data.getGlu()).setScale(1, BigDecimal.ROUND_HALF_UP)); //Postprandial blood glucose
 			}else {
 				rsp.setSuccess(false);
-				Log.error("一体机存入血糖信息不合法");
+				Log.error("One machine stored blood glucose information is not legitimate");
 				return rsp;
 			}
 			messageObj.put("device_sn",deviceId);
@@ -288,12 +288,12 @@ public class GareaService {
 			messageObj.put("inspect_time", data.getDetectDate());
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
-			Log.info("一体机存入血糖信息结果：{}",result);
+			Log.info("Integrated machine into the blood glucose information results：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入血糖信息异常",e);
+			Log.error("One machine stored blood glucose information abnormalities",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -302,7 +302,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 3.2.4 保存血酮数据
+	 * 3.2.4 Preserved blood ketone data
 	 */
 	@POST
 	@Path("/dt/ketone/create")
@@ -319,7 +319,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 保存血压数据 
+	 * Save blood pressure data 
 	 */
 	@POST
 	@Path("/dt/nibp/create")
@@ -332,7 +332,7 @@ public class GareaService {
 		//{"detectDate":"2016-09-21 15:54:54","nibpDia":77,"nibpMea":90,"nibpSys":126,"pr":99}
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C01]: 血压:{}, basereq :{}", nibpStr,req);
+		Log.info("rsq [C01]: blood pressure:{}, basereq :{}", nibpStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -341,20 +341,20 @@ public class GareaService {
 			JSONObject messageObj = new JSONObject();
 			messageObj.put("inspect_code", "C01");
 			messageObj.put("type", "measure");
-			messageObj.put("SYS", data.getNibpSys());//收缩压
-			messageObj.put("DIA", data.getNibpDia());//舒张压
+			messageObj.put("SYS", data.getNibpSys());//Systolic Blood Pressure
+			messageObj.put("DIA", data.getNibpDia());//Diastolic Blood Pressure
 			messageObj.put("PR", data.getPr()); //"nibpDia":77,"nibpMea":90,"nibpSys":126,"pr":99
 			messageObj.put("device_sn",deviceId);
 			messageObj.put("card_code", pIdCard);
 			messageObj.put("inspect_time", data.getDetectDate());
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
-			Log.info("一体机存入血压信息结果：{}",result);
+			Log.info("Integrated machine into blood pressure information results：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入血压信息异常",e);
+			Log.error("Integrated machine into blood pressure information",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -363,7 +363,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 3.2.6 保存血氧数据
+	 * 3.2.6 Preserved blood oxygen data
 	 */
 	@POST
 	@Path("/dt/spo2/create")
@@ -374,7 +374,7 @@ public class GareaService {
 			@FormParam("pIdCard") String pIdCard, @FormParam("dIdCard") String dIdCard) throws Exception {
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [SPO2]: 血氧:{}, basereq :{}", spo2Str,req);//pid 421125199210164314, did 420106197702160011
+		Log.info("rsq [SPO2]: Oxygen:{}, basereq :{}", spo2Str,req);//pid 421125199210164314, did 420106197702160011
 		//bmiStr {"detectDate":"2016-09-21 11:14:04","height":170,"weight":60}
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
@@ -391,12 +391,12 @@ public class GareaService {
 			messageObj.put("inspect_time", temp.getDetectDate());
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
-			Log.info("一体机存入血氧信息结果：{}",result);
+			Log.info("Integrated machine into the blood oxygen information results：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入血氧信息异常",e);
+			Log.error("Integrated machine stored blood oxygen information abnormal",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -404,7 +404,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 3.2.7 保存体温数据 
+	 * 3.2.7 Save body temperature data 
 	 */
 	@POST
 	@Path("/dt/temperature/create")
@@ -431,12 +431,12 @@ public class GareaService {
 			messageObj.put("inspect_time", temp.getDetectDate());
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
-			Log.info("一体机存入TEMP信息结果：{}",result);
+			Log.info("Integrated machine depositTEMPInformation result：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入TEMP信息异常",e);
+			Log.error("Integrated machine depositTEMPAbnormal information",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -444,7 +444,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 保存尿常规数据
+	 * Save urine routine data
 	 */
 	@POST
 	@Path("/dt/urine/create")
@@ -457,7 +457,7 @@ public class GareaService {
 		//rsq [C06]: 尿常规:{"bil":0,"bld":1,"detectDate":"2016-09-22 10:22:28","glu":0,"ket":0,"leu":0,"nit":0,"ph":6,"pro":2,"sg":1.025,"ubg":0,"vc":3}, 
 		ResultDto rsp = new ResultDto();
 		BaseReq req = new BaseReq(appCode, custCode, pIdCard, dIdCard, deviceId, signData,sign) ;
-		Log.info("rsq [C06]: 尿常规:{}, basereq :{}", urineStr,req);
+		Log.info("rsq [C06]: Urine routine:{}, basereq :{}", urineStr,req);
 		try{
 			//checkInsertDevice(deviceId);//保存一体机设备
 			
@@ -466,28 +466,28 @@ public class GareaService {
 			JSONObject messageObj = new JSONObject();
 			messageObj.put("inspect_code", "C06");
 			messageObj.put("type", "measure"); 
-			messageObj.put("LEU", data.getLeu()); //白细胞
-			messageObj.put("NIT", data.getNit()); //亚硝酸盐
-			messageObj.put("UBG", data.getUbg()); //尿胆原
-			messageObj.put("PH",  new BigDecimal(data.getPh()).setScale(1, BigDecimal.ROUND_HALF_UP)); //酸碱度
-			messageObj.put("BLD", data.getBld()); //红细胞
-			messageObj.put("GLU", data.getGlu()); //葡萄糖
-			messageObj.put("KET", data.getKet()); //酮体
-			messageObj.put("PRO", data.getPro()); //蛋白质
-			messageObj.put("BIL", data.getBil()); //胆红素
-			messageObj.put("VC", data.getVc()); //维生素
-			messageObj.put("SG", new BigDecimal(data.getSg()).setScale(3, BigDecimal.ROUND_HALF_UP)); //比重
+			messageObj.put("LEU", data.getLeu()); //white blood cell
+			messageObj.put("NIT", data.getNit()); //nitrite
+			messageObj.put("UBG", data.getUbg()); //Urinary bladder
+			messageObj.put("PH",  new BigDecimal(data.getPh()).setScale(1, BigDecimal.ROUND_HALF_UP)); //Degree of acidity and alkalinity
+			messageObj.put("BLD", data.getBld()); //Red blood cell
+			messageObj.put("GLU", data.getGlu()); //Glucose
+			messageObj.put("KET", data.getKet()); //Ketone
+			messageObj.put("PRO", data.getPro()); //Protein
+			messageObj.put("BIL", data.getBil()); //bilirubin
+			messageObj.put("VC", data.getVc()); //Vitamin
+			messageObj.put("SG", new BigDecimal(data.getSg()).setScale(3, BigDecimal.ROUND_HALF_UP)); //proportion
 			messageObj.put("device_sn",deviceId);
 			messageObj.put("card_code", pIdCard);
 			messageObj.put("inspect_time", data.getDetectDate());
 			JSONObject result = new JSONObject();
 			appInterfaceService.measure(messageObj, result);
-			Log.info("一体机存入尿常规信息结果：{}",result);
+			Log.info("Integrated machine into the urine routine information results：{}",result);
 			if(!(result != null && result.getString("flag") != null &&  result.getString("flag").equals("success"))){
 				rsp.setSuccess(false);
 			}
 		}catch(Exception e){
-			Log.error("一体机存入尿常规信息异常",e);
+			Log.error("Integrated machine in the urine routine information abnormal",e);
 		}
 		
 		Log.info("rsp : " + rsp);
@@ -496,7 +496,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 根据设备编号同步医生信息
+	 * Synchronize doctor's information according to the equipment number
 	 */
 	@GET
 	@Path("/em/info/syncInfo")
@@ -509,7 +509,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 3.1.2 体检报告管理 
+	 * 3.1.2 Physical examination report management 
 	 */
 	@POST
 	@Path("/dt/detectReport/create")
@@ -537,7 +537,7 @@ public class GareaService {
 	Logger Log = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 获取身份证的性别.0 男 ， 1 女  //第17位数字表示性别：奇数表示男性，偶数表示女性；
+	 * Obtain the gender of the identity card.0 male ， 1 female  //No.17Digit representation：Odd numbered male，Even women；
 	 */
 	private String getIdCardSex(String idCard) {
 		if (StringUtils.isEmpty(idCard) || idCard.length() != 18) {
@@ -553,7 +553,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 获取身份证的生日 //第7~14位数字表示：出生年、月、日； 
+	 * Get ID card birthday //No.7~14Bit number representation：Birth year、month、day； 
 	 */
 	private String getIdCardBirthDay(String idCard) {
 		if (StringUtils.isEmpty(idCard) || idCard.length() != 18) {
@@ -564,7 +564,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 获取身份证的年龄 //第7~14位数字表示：出生年、月、日； 
+	 * Obtain the age of ID card //No.7~14Bit number representation：Birth year、month、day； 
 	 */
 	private Integer getIdCardAge(String idCard) {
 		try {
@@ -576,13 +576,13 @@ public class GareaService {
 				return c.get(Calendar.YEAR) - byear;
 			}
 		} catch (Exception e) {
-			Log.error("身份证解析年龄异常", e);
+			Log.error("Identification of age anomalies", e);
 			return null;
 		}
 	}
 
 	static Properties conf_pros = new Properties();
-	static String localFilePath = null; //本地图片地址
+	static String localFilePath = null; //Local image address
 
 	static {
 		try {
@@ -592,12 +592,12 @@ public class GareaService {
 			conf_pros.load(in);
 			localFilePath = conf_pros.getProperty("local_pic_path").trim();
 		} catch (Exception e) {
-			LoggerFactory.getLogger("GareaServiceStatic").error("读取配置文件conf.properties出错了 ", e);
+			LoggerFactory.getLogger("GareaServiceStatic").error("Read configuration fileconf.propertiesError ", e);
 		}
 	}
 
 	/**
-	 * 根据Key读取Value,如果没有，就返回null
+	 * according toKeyreadValue,Without，On returnnull
 	 */
 	public String getConfigByKey(String key) {
 		try {
@@ -609,7 +609,7 @@ public class GareaService {
 	}
 
 	/**
-	 * 图像流转换为图片.
+	 * Image stream is converted to image.
 	 */
 	public boolean inputStreamToPng(InputStream ins, File file) {
 		try {
@@ -623,34 +623,34 @@ public class GareaService {
 			ins.close();
 			return true;
 		} catch (Exception e) {
-			Log.error("转换图片失败.", e);
+			Log.error("Convert image failed.", e);
 			return false;
 		}
 	}
 
 	/**
-	 * 保存一体机设备.
-	 * @param deviceId 一体机设备SN.
-	 * @return  如果已经存在或者保存成功返回true.
+	 * Integrated machine equipment.
+	 * @param deviceId Integrated machine equipmentSN.
+	 * @return  If you already exist or save the returntrue.
 	 */
 	private boolean checkInsertDevice(String deviceId){
 		//用线程，队列来处理 //如果考虑并发的话		
 		try{
 			Record record = Db.findFirst("select SN from device where sn=?",deviceId);
 			if(record != null && StringUtils.isNotEmpty(record.getStr("SN"))){
-				Log.debug("盖瑞一体机设备已存在:{}",deviceId);
+				Log.debug("Gary machine equipment already exists:{}",deviceId);
 				return true;
 			}else{
 				int count = Db.update("insert into device (device_id,device_type,sn,create_time,remark) values(?,?,?,NOW(),?)",
-							new Object[] { deviceId, "GAREA",deviceId,"盖睿一体机" }); 
+							new Object[] { deviceId, "GAREA",deviceId,"Gairui integrated machine" }); 
 				
 				if (count > 0) {
-					Log.info("盖瑞一体机设备保存成功:{}", deviceId);
+					Log.info("Gary machine equipment saved successfully:{}", deviceId);
 					return true;
 				}
 			}	
 		}catch(Exception e){
-			Log.info("盖瑞一体机设备保存失败,"+deviceId, e);
+			Log.info("Gary machine equipment save failed,"+deviceId, e);
 		}
 		return false;
 	}

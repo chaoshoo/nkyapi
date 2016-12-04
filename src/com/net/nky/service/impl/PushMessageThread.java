@@ -13,9 +13,9 @@ import com.jfinal.plugin.activerecord.Record;
 import com.net.nky.service.push.PushUtil;
 
 /**
- * 推送消息线程.
+ * Push message thread.
  * @author Ken
- * @version 2016年9月29日
+ * @version 2016year9month29day
  */
 public class PushMessageThread implements Runnable {
 
@@ -51,7 +51,7 @@ public class PushMessageThread implements Runnable {
 					//android push
 					boolean pushed = false;
 					if(StringUtils.isNotEmpty(channeId)){
-						Log.debug("{} 推送消息请求到用户android ：{}",vipCode,channeId);
+						Log.debug("{} Push message request to userandroid ：{}",vipCode,channeId);
 //						PushUtil.addDevicesToTag("testTag", new String[] {channeId });
 						String msgId = PushUtil.pushMsgToSingleDevice(channeId, title, content,msgtype);
 						if(StringUtils.isNotEmpty(msgId)){
@@ -63,7 +63,7 @@ public class PushMessageThread implements Runnable {
 						if(wxopenid.endsWith("-")){
 							wxopenid = wxopenid.substring(0, wxopenid.length()-1);
 						}
-							Log.debug("{} 推送消息请求到用户微信:{}",vipCode,wxopenid);
+							Log.debug("{} Push message request to user WeChat:{}",vipCode,wxopenid);
 							String str = PushUtil.pushMsgToWeiXin(wxopenid, content);
 							if(str.startsWith("true")){
 								pushed = true; 
@@ -71,11 +71,11 @@ public class PushMessageThread implements Runnable {
 					}
 					if(pushed){
 						int flag = Db.update("update message_center set send_time = now() where id = ? ",messageId);
-						Log.debug("{} 推送消息请求到用户:{}",vipCode,flag);
+						Log.debug("{} Push message request to user:{}",vipCode,flag);
 					}
 				}
 			}else{
-				Log.debug("推消息-没有需要推送的消息");
+				Log.debug("Push messages-There is no need to push the message");
 			}
 			
 		}

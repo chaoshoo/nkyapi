@@ -3,15 +3,15 @@ package com.net.nky.garea.vo;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * 温度.
+ * temperature.
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class Temperature {
 
 	private String detectDate;
 
-	private Float temperature;//体温 *10
+	private Float temperature;//temperature *10
 
 	public String getDetectDate() {
 		return detectDate;

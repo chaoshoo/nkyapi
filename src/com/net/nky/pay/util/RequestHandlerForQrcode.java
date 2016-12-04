@@ -17,41 +17,41 @@ import javax.servlet.http.HttpSession;
 
 
 /*
- '微信支付服务器签名支付请求请求类
+ 'WeChat payment server signature payment request class
  '============================================================================
- 'api说明：
+ 'apiExplain：
  'init(app_id, app_secret, partner_key, app_key);
- '初始化函数，默认给一些参数赋值，如cmdno,date等。
- 'setKey(key_)'设置商户密钥
- 'getLasterrCode(),获取最后错误号
- 'GetToken();获取Token
- 'getTokenReal();Token过期后实时获取Token
- 'createMd5Sign(signParams);生成Md5签名
- 'genPackage(packageParams);获取package包
- 'createSHA1Sign(signParams);创建签名SHA1
- 'sendPrepay(packageParams);提交预支付
- 'getDebugInfo(),获取debug信息
+ 'Initialization function，Default to some parameter assignment，ascmdno,dateetc.。
+ 'setKey(key_)'Set merchant key
+ 'getLasterrCode(),Get the last error number
+ 'GetToken();ObtainToken
+ 'getTokenReal();TokenReal time acquisition after expirationToken
+ 'createMd5Sign(signParams);generateMd5autograph
+ 'genPackage(packageParams);Obtainpackagepackage
+ 'createSHA1Sign(signParams);Create signatureSHA1
+ 'sendPrepay(packageParams);Submit pre payment
+ 'getDebugInfo(),Obtaindebuginformation
  '============================================================================
  '*/
 public class RequestHandlerForQrcode {
-	/** Token获取网关地址地址 */
+	/** TokenAccess gateway address */
 	private String tokenUrl;
-	/** 预支付网关url地址 */
+	/** Pre payment gatewayurladdress */
 	private String gateUrl;
-	/** 查询支付通知网关URL */
+	/** Query payment notification gatewayURL */
 	private String notifyUrl;
-	/** 商户参数 */
+	/** Merchant parameters */
 	private String appid;
 	private String appkey;
 	private String partnerkey;
 	private String appsecret;
 	private String key;
-	/** 请求的参数 */
+	/** Parameters of request */
 	private SortedMap parameters;
 	/** Token */
 	private String Token;
 	private String charset;
-	/** debug信息 */
+	/** debuginformation */
 	private String debugInfo;
 	private String last_errcode;
 
@@ -60,7 +60,7 @@ public class RequestHandlerForQrcode {
 	private HttpServletResponse response;
 
 	/**
-	 * 初始构造函数。
+	 * Initial constructor。
 	 * 
 	 * @return
 	 */
@@ -78,7 +78,7 @@ public class RequestHandlerForQrcode {
 	}
 
 	/**
-	 * 初始化函数。
+	 * Initialization function。
 	 */
 	public void init(String app_id, String app_secret,	String partner_key) {
 		this.last_errcode = "0";
@@ -94,24 +94,24 @@ public class RequestHandlerForQrcode {
 	}
 
 	/**
-	 * 获取最后错误号
+	 * Get the last error number
 	 */
 	public String getLasterrCode() {
 		return last_errcode;
 	}
 
 	/**
-	 *获取入口地址,不包含参数值
+	 *Access to an entry address,Does not contain parameter values
 	 */
 	public String getGateUrl() {
 		return gateUrl;
 	}
 
 	/**
-	 * 获取参数值
+	 * Get parameter values
 	 * 
 	 * @param parameter
-	 *            参数名称
+	 *            Parameter name
 	 * @return String
 	 */
 	public String getParameter(String parameter) {
@@ -157,7 +157,7 @@ public class RequestHandlerForQrcode {
 	}
 
 	/**
-	 * 创建md5摘要,规则是:按参数名称a-z排序,遇到空值的参数不参加签名。
+	 * Establishmd5abstract,Rule is:By parameter namea-zsort,Parameters encountered with null values do not participate in the signature。
 	 */
 	public String createSign(SortedMap<String, String> packageParams) {
 		StringBuffer sb = new StringBuffer();
@@ -179,7 +179,7 @@ public class RequestHandlerForQrcode {
 
 	}
 	/**
-	 * 创建package签名
+	 * Establishpackageautograph
 	 */
 	public boolean createMd5Sign(String signParams) {
 		StringBuffer sb = new StringBuffer();
@@ -230,7 +230,7 @@ public class RequestHandlerForQrcode {
 		}
 
 	/**
-	 * 设置debug信息
+	 * Configdebuginformation
 	 */
 	protected void setDebugInfo(String debugInfo) {
 		this.debugInfo = debugInfo;
@@ -246,4 +246,3 @@ public class RequestHandlerForQrcode {
 	}
 
 }
-

@@ -27,7 +27,7 @@ private static final Logger LOGGER = Logger.getLogger(RunBatchContoller.class);
 
  
 	/**
-	 *查询医生入库，并根據id循環便利科室，在根據科室循環便利醫生
+	 *Query doctor，Also accordingidCirculation convenient Department，In accordance with the Department cycle convenient doctor
 	 */
  	@RequestMapping(value = "/searchHospital.do")
 	public void searchHospital() {
@@ -44,10 +44,10 @@ private static final Logger LOGGER = Logger.getLogger(RunBatchContoller.class);
 			messageObj.put("hosid", "0");
 			messageObj.put("rowstart", "0");
 			messageObj.put("rowcount", "0");
-			LOGGER.info("------------------------------------定时查询医院信息------------------------------------");
+			LOGGER.info("------------------------------------Time query hospital information------------------------------------");
 			appInterfaceServiceImpl.hospitalalllist(messageObj, resulthos);
 			int json=runBatchService.insertHospital(resulthos);
-			LOGGER.info("------------------------------------插入數據條數------------------------------------"+json);
+			LOGGER.info("------------------------------------Insert number of data------------------------------------"+json);
 			if(json>0){
 				//根據result裡面的hostidl來查科室的信息
 				List<Map> list = JsonUtil.getListForResult(resulthos);
@@ -57,7 +57,7 @@ private static final Logger LOGGER = Logger.getLogger(RunBatchContoller.class);
 						messageObj.put("hosid", hosid);
 						appInterfaceServiceImpl.deptalllist(messageObj, resultdept);
 						json2=runBatchService.insertDeptalllist(hosid,resultdept);
-						LOGGER.info("------------------------------------插入數據條數------------------------------------"+json2);
+						LOGGER.info("------------------------------------Insert number of data------------------------------------"+json2);
 						if(json2 > 0){
 							List<Map> list2= JsonUtil.getListForResult(resultdept);
 							if(list2.size()>0){
@@ -66,7 +66,7 @@ private static final Logger LOGGER = Logger.getLogger(RunBatchContoller.class);
 									messageObj.put("deptid", deptid);
 									appInterfaceServiceImpl.doctor(messageObj, resultdoctor);
 									json3=runBatchService.insertDoctoralllist(hosid,deptid,resultdoctor);
-									LOGGER.info("------------------------------------插入數據條數------------------------------------"+json3);
+									LOGGER.info("------------------------------------Insert number of data------------------------------------"+json3);
 								}
 							}
 						
@@ -82,7 +82,7 @@ private static final Logger LOGGER = Logger.getLogger(RunBatchContoller.class);
 			
 			
 		} catch (Exception e) {
-			LOGGER.error("定时跑批失败"+e);
+			LOGGER.error("Timed run batch failed"+e);
 			e.printStackTrace();
 		}
 

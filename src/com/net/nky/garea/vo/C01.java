@@ -1,12 +1,12 @@
 package com.net.nky.garea.vo;
 
 /**
- * 血压
+ * blood pressure
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class C01 {
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    Time format character String
 	private Integer nibpDia;// 
 	private Integer nibpMea;// 
 	private Integer nibpSys;// 

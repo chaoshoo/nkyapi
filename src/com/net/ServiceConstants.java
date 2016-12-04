@@ -4,7 +4,7 @@ package com.net;
 import java.util.ResourceBundle;
 
 /**
- * 服务常量
+ * Service constant
  * @author hiveview
  *
  */
@@ -26,7 +26,7 @@ public class ServiceConstants {
 	public static final String CENTERGH= "http://27.17.40.149:9000/hy_ghservice/centergh/flag?";
 	public static final String CIPHERURL="http://27.17.40.149:9000/hy_ghservice/centergh/jiami?miwen=";
 	public static final String WEIXIN_PUSH="http://wx.nbrobo.com/wxPush/send.json?";
-	public static final String WEIXIN_MD5KEY="nky_0654321" ;//  如果要修改  对应微信也要修改
+	public static final String WEIXIN_MD5KEY="nky_0654321" ;//  If you want to modify  Corresponds to WeChat also want to modify
 	
 	
 	public static final String APP_KEY = conf.getString("APP_KEY");;

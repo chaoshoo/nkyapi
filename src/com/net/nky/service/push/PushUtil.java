@@ -46,17 +46,17 @@ import com.net.util.MD5Util;
 import net.sf.json.JSONObject;
 
 /**
- * 消息推送工具类.
- * 用于tag组的CURD,单个、tag的消息推送.
+ * Message push tool class.
+ * Be used fortagGroupCURD,single、tagMessage push.
  * @author Ken
- * @version 2016年8月22日
+ * @version 2016year8month22day
  */
 public class PushUtil {
 
 	private static final Logger LOG = LoggerFactory.getLogger(PushUtil.class);
 
 	/**
-	 * 获取推送客户端.
+	 * Get push client.
 	 */
 	private static BaiduPushClient getPushClient() {
 		PushKeyPair pair = new PushKeyPair(PushMetaData.API_KEY, PushMetaData.SECRET_KEY);
@@ -75,7 +75,7 @@ public class PushUtil {
 	}
 
 	/**
-	 * 添加标签，标签即为小组.
+	 * Add tag，Tag is a group.
 	 */
 	public static boolean createTag(String tagName) {
 		try {
@@ -88,13 +88,13 @@ public class PushUtil {
 				return true;
 			}
 		} catch (Exception e) {
-			LOG.error("添加推送Tag异常", e);
+			LOG.error("Add pushTagabnormal", e);
 		}
 		return false;
 	}
 
 	/**
-	 * 删除标签，标签即为小组.
+	 * delete a tap，Tag is a group.
 	 */
 	public static boolean deleteTag(String tagName) {
 		try {
@@ -106,15 +106,15 @@ public class PushUtil {
 				return true;
 			}
 		} catch (Exception e) {
-			LOG.error("删除标签异常", e);
+			LOG.error("Delete tag exception", e);
 		}
 		return false;
 	}
 
 	/**
-	 * 查询标签，标签即为小组.TagInfo:[ tagId tagName info type  createTime]
-	 * @param maxNum 是最大的数据，不填默认是100
-	 * @return null 如果没有. 
+	 * Query tag，Tag is a group.TagInfo:[ tagId tagName info type  createTime]
+	 * @param maxNum Is the biggest data，Do not fill the default is100
+	 * @return null Without. 
 	 */
 	public static List<TagInfo> queryTags(String tagName, Integer maxNum) {
 		try {
@@ -126,21 +126,21 @@ public class PushUtil {
 					.addDeviceType(maxNum);
 			QueryTagsResponse response = getPushClient().queryTags(request);
 			if (null == response) {
-				LOG.debug(tagName + " 没有查询到数据: ");
+				LOG.debug(tagName + " No query to data: ");
 				return null;
 			}
 			// Http请求结果解析打印
 			LOG.debug("totalNum: " + response.getTotalNum());
 			return response.getTagsInfo();
 		} catch (Exception e) {
-			LOG.error(" 查询标签异常", e);
+			LOG.error(" Query tag exception", e);
 		}
 		return null;
 	}
 
 	/**
-	 * 查询标签下的设备数.
-	 * @return null 如果异常. 
+	 * Number of devices under query tag.
+	 * @return null If abnormal. 
 	 */
 	public static Integer queryDeviceNumInTag(String tagName) {
 		try {
@@ -153,14 +153,14 @@ public class PushUtil {
 			}
 			return response.getDeviceNum();
 		} catch (Exception e) {
-			LOG.error("查询标签下的设备数异常", e);
+			LOG.error("Number of devices under query tag", e);
 		}
 		return null;
 	}
 
 	/**
-	 * 标签中添加设备
-	 * @return List<String> 返回没有添加成功的数据. 
+	 * Add device in label
+	 * @return List<String> Returns no data that has been added successfully. 
 	 */
 	public static List<String> addDevicesToTag(String tagName, String channelIds[]) {
 		List<String> errorChannelIds = new ArrayList<String>();
@@ -184,14 +184,14 @@ public class PushUtil {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error("查询标签下的设备异常", e);
+			LOG.error("Device exception under query tag", e);
 		}
 		return errorChannelIds;
 	}
 
 	/**
-	 * 标签中移除设备
-	 * @return List<String> 返回没有移除成功的数据. 
+	 * Tag removal device
+	 * @return List<String> Return data not removed successfully. 
 	 */
 	public static List<String> deleteDevicesFromTag(String tagName, String channelIds[]) {
 		List<String> errorChannelIds = new ArrayList<String>();
@@ -215,21 +215,21 @@ public class PushUtil {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error("移除标签下的设备异常", e);
+			LOG.error("Remove the tag from the exception of the device", e);
 		}
 		return errorChannelIds;
 	}
 
 	/**
-	 * 标签中推送消息
-	 * @return List<String> 返回消息id. 
+	 * Push messages in the tag
+	 * @return List<String> Return messageid. 
 	 */
 	public static String pushMsgToTag(String tagName, String message) {
 		try {
 			// 4. specify request arguments
 			// pushTagTpye = 1 for common tag pushing
 			PushMsgToTagRequest request = new PushMsgToTagRequest().addTagName(tagName).addMsgExpires(new Integer(3600))
-					.addMessageType(0) // 添加透传消息
+					.addMessageType(0) // Add through message
 					// .addSendTime(System.currentTimeMillis() / 1000 + 120) //设置定时任务
 					.addMessage(message).addDeviceType(3);
 			// 5. http request
@@ -239,14 +239,14 @@ public class PushUtil {
 					+ response.getTimerId());
 			return response.getMsgId();
 		} catch (Exception e) {
-			LOG.error("标签中推送消息异常", e);
+			LOG.error("Push message exception in label", e);
 		}
 		return null;
 	}
 
 	/**
-	 * 标签中推送消息结果查询.
-	 * @return List<String> 返回消息推送成功的个数. 
+	 * Tab push message result query.
+	 * @return List<String> Returns a number of successful message push. 
 	 */
 	public static Integer queryMsgStatus(String messageId) {
 		try {
@@ -267,17 +267,17 @@ public class PushUtil {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error("标签中推送消息查询异常", e);
+			LOG.error("Exception of push message query in label", e);
 		}
 		return null;
 	}
 
 	/**
-	 * 推送消息.
+	 * Push message.
 	 * @param channelId 
-	 * @param 消息标题
-	 * @param description 消息详情
-	 * @return List<String> 返回messgeId. 
+	 * @param Message title
+	 * @param description Message details
+	 * @return List<String> ReturnmessgeId. 
 	 */
 	public static String pushMsgToSingleDevice(String channelId, String title, String description,Integer msgType) {
 		try {
@@ -291,11 +291,11 @@ public class PushUtil {
 			notification.put("open_type", 1);
 			notification.put("url", "http://push.baidu.com");
 			JSONObject jsonCustormCont = new JSONObject();
-			jsonCustormCont.put("msgType", msgType); //自定义内容，key-value
+			jsonCustormCont.put("msgType", msgType); //Custom content，key-value
 			notification.put("custom_content", jsonCustormCont);
 
 			PushMsgToSingleDeviceRequest request = new PushMsgToSingleDeviceRequest().addChannelId(channelId)
-					.addMsgExpires(new Integer(3600)). // message有效时间
+					.addMsgExpires(new Integer(3600)). // messageEffective time
 //					addMessageType(1).// 1：通知,0:透传消息. 默认为0 注：IOS只有通知.
 					addMessage(notification.toString()).addDeviceType(3);// deviceType => 3:android, 4:ios
 			// 5. http request
@@ -304,15 +304,15 @@ public class PushUtil {
 			LOG.debug("msgId: " + response.getMsgId() + ",sendTime: " + response.getSendTime());
 			return response.getMsgId();
 		} catch (Exception e) {
-			LOG.error("推送消息到单台设备异常", e);
+			LOG.error("Push messages to a single device exception", e);
 		}
 		return null;
 	}
 
 	/**
-	 * 推送消息批量.
-	 * @return List<String> 返回消息推送成功的个数. 
-	 * @return null表示返回有失败的情况
+	 * Push message batch.
+	 * @return List<String> Returns a number of successful message push. 
+	 * @return nullIndicates a failure to return
 	 */
 	public static Map<String, String> pushMsgToManyDevice(List<String> channelIds, String title, String description,Integer msgType) {
 		Map<String, String> cIdMsgId = new HashMap<String, String>();
@@ -324,7 +324,7 @@ public class PushUtil {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error("标签中批量推送消息异常", e);
+			LOG.error("Batch push message exception in label", e);
 		}
 		if(cIdMsgId == null || cIdMsgId.size()<1){
 			return null;
@@ -338,7 +338,7 @@ public class PushUtil {
 		map.put("message", msg);
 		String token = ServiceConstants.WEIXIN_MD5KEY+openids+msg;		
 		map.put("token", MD5Util.MD5(token, "utf-8"));
-		String str = "false:推送异常";
+		String str = "false:Push exception";
 		try {
 			LOG.info("send wx map:::"+map);
 			str = HttpClient.httpPost(ServiceConstants.WEIXIN_PUSH, map);

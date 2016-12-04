@@ -16,7 +16,7 @@ import com.net.nky.pay.http.HttpClientConnectionManager;
 public class WxQrcodeUtil {
 
 	/**
-	 * 获取随机字符串
+	 * Get random string
 	 * @return
 	 */
 	public static String getNonceStr() {
@@ -32,7 +32,7 @@ public class WxQrcodeUtil {
 	
 	
 	/**
-	 * 元转换成分
+	 * Meta transformation
 	 * @param money
 	 * @return
 	 */
@@ -41,7 +41,7 @@ public class WxQrcodeUtil {
 			return "";
 		}
 		// 金额转化为分为单位
-		String currency =  amount.replaceAll("\\$|\\￥|\\,", "");  //处理包含, ￥ 或者$的金额  
+		String currency =  amount.replaceAll("\\$|\\￥|\\,", "");  //Processing contains, ￥ perhaps$Amount of  
         int index = currency.indexOf(".");  
         int length = currency.length();  
         Long amLong = 0l;  

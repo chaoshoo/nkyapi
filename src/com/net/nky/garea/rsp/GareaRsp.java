@@ -3,15 +3,15 @@ package com.net.nky.garea.rsp;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * 返回接口对象定义.
+ * Returns an interface object definition.
  * @author Ken
- * @version 2016年9月20日
+ * @version 2016year9month20day
  */
 public class GareaRsp {
 
-	private Boolean success;//true:创建成功false:创建失败
-	private String errorCode;//保存失败时的错误码
-	private String errorDesc;//错误信息描述
+	private Boolean success;//true:Create successfalse:Create failed
+	private String errorCode;//Error code when saving failed
+	private String errorDesc;//Error information description
 
 	public Boolean getSuccess() {
 		return success;

@@ -18,12 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.net.nky.service.AppInterfaceService;
 
 /**
- * 宁康园对外接口.
+ * The external interface of Ning Kang Yuan.
  * Demo:
  * http://localhost:8080/nkyapi/mobile/interface.do?content={type:%27login%27}
  * 
  * @author Ken
- * @version 2016年8月19日
+ * @version 2016year8month19day
  */
 @Controller
 @RequestMapping("/mobile")
@@ -65,9 +65,9 @@ public class AppInterfaceController {
 			try {
 				response.getWriter().write(e.getMessage());
 			} catch (IOException e1) {
-				LOG.error("关闭输出流异常.", e1);
+				LOG.error("Turn off output stream exception.", e1);
 			}
-			LOG.error("IO异常.", e);
+			LOG.error("IOabnormal.", e);
 		}
 	}
 

@@ -5,18 +5,18 @@ import java.io.InputStream;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * 创建医生或者居民用户
+ * Create a doctor or resident user
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class CreateInfoReq extends BaseReq {
 
-	private String deviceId;// 设备编号 50 位以内字符
-	private Integer userType;// 用户类型 0 ：居民用户  1 ：医生
-	private String name;// 姓名 创建信息对应的姓名
-	private String address;// 地址 身份证 上 住址
-	private String nativeplace;//民族 身份证上 民族
-	private String phone;// 电话号码
+	private String deviceId;// Equipment number 50 Bit less than character
+	private Integer userType;// customer type 0 ：Resident users  1 ：Doctor
+	private String name;// Name Create the name of the corresponding information
+	private String address;// address ID upper address
+	private String nativeplace;//Nation Identity card Nation
+	private String phone;// Phone number
 	private InputStream file;
 
 	public String getDeviceId() {

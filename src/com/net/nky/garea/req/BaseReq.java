@@ -3,18 +3,18 @@ package com.net.nky.garea.req;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * /Garea-GT1000-业务数据上传规范v0.2.pdf
- * 公共参数作为所有接口都需要提供的参数，除非有接口特殊说明的可不用提供公共参数。
+ * /Garea-GT1000-Business data upload specificationv0.2.pdf
+ * Common parameters as all interfaces are required to provide the parameters，Unless there is a special description of the interface can not provide public parameters。
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class BaseReq {
 
 	protected String appCode;
 
-	protected String custCode;// 企业客户编码 4 位字符
-	protected String pIdCard;//居民用户身份证号 创建医生时可为空
-	protected String dIdCard;// 医生身份证号
+	protected String custCode;// Enterprise customer code 4 Bit character
+	protected String pIdCard;//Resident identity card number When you create a doctor, you can be empty.
+	protected String dIdCard;// Doctor ID card number
 
 	protected String deviceId;
 	protected String signData;

@@ -3,25 +3,25 @@ package com.net.nky.garea.req;
 import java.util.Date;
 
 /**
- * 3.1.2上传查体报告
+ * 3.1.2Upload search report
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class DetectReportReq extends BaseReq {
 
-	private Long flupId;//随访编号 为空时是体检报告
+	private Long flupId;//Follow up number A physical examination report is empty
 
-	private String deviceInfo;//设备信息  deviceId: 设备编号
+	private String deviceInfo;//Equipment information  deviceId: Equipment number
 
-	private String reportNo;//报告编号  17 位是体检报告  18 位是随访报告
+	private String reportNo;//Report number  17 Physical examination report  18 Follow up Report
 
-	private Date reportTime;//查体报告生成时间
+	private Date reportTime;//Check body report generation time
 
-	private Integer influence;//溶血 :1  黄疸 	:2    脂血 :4
+	private Integer influence;//hemolysis :1  jaundice 	:2    Blood fat :4
 
-	private Object reportData;//报告内容  与心电检测时间只能一个为空
+	private Object reportData;//Report content  And ECG detection time can only be an empty
 
-	private Date ecgDetectDate;//心电检测时间     与报告数据只能一个为空
+	private Date ecgDetectDate;//ECG detection time     And report data can only be an empty
 
 	public String getDeviceInfo() {
 		return deviceInfo;

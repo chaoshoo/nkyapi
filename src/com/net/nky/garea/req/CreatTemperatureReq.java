@@ -6,9 +6,9 @@ import com.net.nky.garea.vo.DeviceInfo;
 import com.net.nky.garea.vo.Temperature;
 
 /**
- * 创建医生或者居民用户
+ * Create a doctor or resident user
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class CreatTemperatureReq extends BaseReq{
 

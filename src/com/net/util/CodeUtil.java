@@ -4,14 +4,14 @@ import java.util.Random;
 
 
 /**
- * 生成随机数,编码,序列
+ * Generating random number,Code,sequence
  * @author YC
  *
  */
 public class CodeUtil {
 	
 	/**
-	 * 获得指定长度的随机码
+	 * Get the random code of the specified length
 	 * @param len
 	 * @return
 	 */

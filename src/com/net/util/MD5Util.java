@@ -118,7 +118,7 @@ public class MD5Util {
     
     
 	/**
-	 * md5加密
+	 * md5encryption
 	 * @param desc
 	 * @return
 	 * @throws NoSuchAlgorithmException
@@ -193,7 +193,7 @@ public class MD5Util {
 	            byte[] decodeData = Base64.decode(strPriKeyText);   
 	            PKCS8EncodedKeySpec priPKCS8 = new PKCS8EncodedKeySpec(decodeData);     
 	            KeyFactory keyf = KeyFactory.getInstance("RSA");     
-	            PrivateKey prikey = keyf.generatePrivate(priPKCS8);   //用私钥对信息生成数字签名     
+	            PrivateKey prikey = keyf.generatePrivate(priPKCS8);   //Using private key to generate digital signature for information     
 	            java.security.Signature signet = java.security.Signature.getInstance("MD5withRSA");     
 	            signet.initSign(prikey);     
 	            signet.update(plainText.getBytes());     

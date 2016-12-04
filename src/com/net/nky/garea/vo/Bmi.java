@@ -3,14 +3,14 @@ package com.net.nky.garea.vo;
 /**
  * 
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 public class Bmi {
 	//bmiStr {"detectDate":"2016-09-21 11:14:04","height":170,"weight":60}
-	private String detectDate;//检测时间    时间格式字 符串
-	private Float weight;//体重
-	private Float height;//身高
-	private Float bmi;//bmi指数
+	private String detectDate;//Detection time    Time format character String
+	private Float weight;//weight
+	private Float height;//height
+	private Float bmi;//bmiindex
 
 	public String getDetectDate() {
 		return detectDate;

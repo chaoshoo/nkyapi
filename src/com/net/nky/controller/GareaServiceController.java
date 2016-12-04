@@ -16,9 +16,9 @@ import com.net.nky.garea.req.EcgReq;
 import com.net.nky.garea.rsp.GareaRsp;
 
 /**
- * 盖瑞一体机.
+ * Gary machine.
  * @author Ken
- * @version 2016年9月19日
+ * @version 2016year9month19day
  */
 @Controller
 @RequestMapping("/xxx")
@@ -27,7 +27,7 @@ public class GareaServiceController {
 	Logger Log = LoggerFactory.getLogger(this.getClass());
 
 	/**
-	 * 创建医生或者居民用户
+	 * Create a doctor or resident user
 	 */
 	@RequestMapping(value = "/api/em/info/create", method = RequestMethod.POST
 			, consumes="application/json;chartset=utf-8")
@@ -63,7 +63,7 @@ public class GareaServiceController {
 	}
 
 	/**
-	 * 3.1.2上传查体报告
+	 * 3.1.2Upload search report
 	 */
 	@RequestMapping(value = "/api/dt/detectReport/create", method = RequestMethod.POST)
 	@ResponseBody
@@ -76,7 +76,7 @@ public class GareaServiceController {
 	}
 
 	/**
-	 * 3.2.1 上传BMI数据接口
+	 * 3.2.1 uploadBMIdata interface
 	 */
 	@RequestMapping(value = "/api/dt/bmi/create", method = RequestMethod.POST)
 	@ResponseBody
@@ -89,7 +89,7 @@ public class GareaServiceController {
 	}
 	
 	/**
-	 * 3.2.2 ECG保存
+	 * 3.2.2 ECGSave
 	 */
 	@RequestMapping(value = "/api/dt/ecgManage/create", method = RequestMethod.POST)
 	@ResponseBody

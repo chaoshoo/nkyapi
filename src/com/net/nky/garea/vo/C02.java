@@ -1,14 +1,14 @@
 package com.net.nky.garea.vo;
 
 /**
- * 7种类型"空腹","早餐餐前","早餐餐后","午餐餐前","午餐餐后","晚餐餐前","晚餐餐后" 的对应代码发我
- * 0到6
+ * 7Types of"Fasting","Before breakfast","After breakfast","Before lunch","After lunch","Before dinner","After dinner" The corresponding code sent me
+ * 0reach6
  * @author Ken
- * @version 2016年9月21日
+ * @version 2016year9month21day
  */
 public class C02 {
 
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    Time format character String
 
 	private Float glu;
 

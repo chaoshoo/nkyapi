@@ -14,28 +14,28 @@ import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 
 /**
- * 短信验证码.
+ * SMS verification code.
  * @author Ken
- * @version 2016年8月18日
+ * @version 2016year8month18day
  */
 public class MessageSendUtil {
 
 	static final Logger LOG = LoggerFactory.getLogger(MessageSendUtil.class);
 
 	/**
-	 * 发送短信验证码 注册.
-	 * @param tel 接受短信的号码.
-	 * @return  对象中:
-	 * 		 success; //是否发送成功  
-	 * 		 verifycode; //发送成功的验证吗 
-	 * 		message;//发送失败的原因，和发送成功时为：短信发送成功
-	 * <p><b>示例</b>
-	 *  <p>短信：【注册验证】验证码491395，您正在注册成为沃博健康用户，感谢您的支持！ 
-	 *  <p>对象返回：[success=true,verifycode=491395,message=短信发送成功]
-	 *  <p>示例:System.out.println(sendRegistMessage("13367241859") );
+	 * Send SMS verification code register.
+	 * @param tel Number to receive text messages.
+	 * @return  Object in:
+	 * 		 success; //Whether to send success  
+	 * 		 verifycode; //Send successful verification 
+	 * 		message;//Causes of failure，And send success to：SMS sent
+	 * <p><b>Sample</b>
+	 *  <p>Short message：【Registration verification】Verification Code491395，You are a registered user wubba health，Thank you for your support.！ 
+	 *  <p>Object return：[success=true,verifycode=491395,message=SMS sent]
+	 *  <p>Sample:System.out.println(sendRegistMessage("13367241859") );
 	 */
 	public static MessageResultVo sendRegistMessage(String tel) {
-		MessageResultVo vo = new MessageResultVo(false, getRandom6());//"短信发送成功"
+		MessageResultVo vo = new MessageResultVo(false, getRandom6());//"SMS sent"
 		try {
 			//对1分钟内发出多条，和一条内超过指定条数处理
 			if (!MessageCacheSingleton.getSingleton().getPhonegap(tel)) {
@@ -56,32 +56,32 @@ public class MessageSendUtil {
 			req.setSmsTemplateCode(MessageMetaData.register.SMSTEMPLATECODE);
 			AlibabaAliqinFcSmsNumSendResponse rsp = MessageMetaData.getMessageClient().execute(req);
 
-			LOG.error("{}短信发送状态:{}", tel, rsp.getBody());
+			LOG.error("{}SMS status:{}", tel, rsp.getBody());
 			if (rsp.getResult().getSuccess()) {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
-			LOG.error(tel+"短信发送异常,API调用异常:{}", e);
+			LOG.error(tel+"Message sending exception,APICall exception:{}", e);
 		} catch (Exception e) {
-			LOG.error(tel+"短信发送异常:{}", e);
+			LOG.error(tel+"Message sending exception:{}", e);
 		}
 		return vo;
 	}
 
 	/**
-	 * 发送短信验证码 登录密码.
-	 * @param tel 接受短信的号码.
-	 * @return  对象中:
-	 * 		 success; //是否发送成功  
-	 * 		 verifycode; //发送成功的验证吗 
-	 * 		message;//发送失败的原因，和发送成功时为：短信发送成功
-	 * <p><b>示例</b>
-	 *<p> 短信示例：【身份验证】验证码189733，您正在尝试修改沃博健康登录密码，请妥善保管账户信息。
-	 *<p> 对象返回示例：[success=true,verifycode=189733,message=短信发送成功]
-	 *<p> 示例:System.out.println(sendChangePwdMessage("13367241859") );
+	 * Send SMS verification code Login password.
+	 * @param tel Number to receive text messages.
+	 * @return  Object in:
+	 * 		 success; //Whether to send success  
+	 * 		 verifycode; //Send successful verification 
+	 * 		message;//Causes of failure，And send success to：SMS sent
+	 * <p><b>Sample</b>
+	 *<p> SMS sample：【Authentication】Verification Code189733，You are trying to modify the login password wubba health，Please keep your account information。
+	 *<p> Object return sample：[success=true,verifycode=189733,message=SMS sent]
+	 *<p> Sample:System.out.println(sendChangePwdMessage("13367241859") );
 	 */
 	public static MessageResultVo sendChangePwdMessage(String tel) {
 		MessageResultVo vo = new MessageResultVo(false, getRandom6());
@@ -105,29 +105,29 @@ public class MessageSendUtil {
 			req.setSmsTemplateCode(MessageMetaData.resetPwd.SMSTEMPLATECODE);
 			AlibabaAliqinFcSmsNumSendResponse rsp = MessageMetaData.getMessageClient().execute(req);
 
-			LOG.error("{}短信发送状态:{}", tel, rsp.getBody());
+			LOG.error("{}SMS status:{}", tel, rsp.getBody());
 			if (rsp.getResult().getSuccess()) {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
-			LOG.error(tel+"短信发送异常,API调用异常:{}",e);
+			LOG.error(tel+"Message sending exception,APICall exception:{}",e);
 		} catch (Exception e) {
-			LOG.error(tel+"短信发送异常:{}", e);
+			LOG.error(tel+"Message sending exception:{}", e);
 		}
 		return vo;
 	}
 	
 	/**
-	 * 发送短信挂号.
+	 * Send SMS.
 	 */
 	public static MessageResultVo sendGh(String tel,String  hospital , String  depart,String  doctor,String  date,String  num) {
 		MessageResultVo vo = new MessageResultVo(false, getRandom6());
 		try {
 			AlibabaAliqinFcSmsNumSendRequest req = MessageMetaData.getRequest(tel);
-			req.setSmsFreeSignName("健康管理服务平台");
+			req.setSmsFreeSignName("Health management service platform");
 			String reqparam  = "{code:'" + vo.getVerifycode() + "',product:'" + MessageMetaData.SIGN + "'"+
 					",hospital:'" + hospital + "'"+ 
 					",depart:'" + depart + "'"+ 
@@ -140,23 +140,23 @@ public class MessageSendUtil {
 			req.setSmsTemplateCode("SMS_15475693");
 			AlibabaAliqinFcSmsNumSendResponse rsp = MessageMetaData.getMessageClient().execute(req);
 			
-			LOG.error("{}短信发送状态:{}", tel, rsp.getBody());
+			LOG.error("{}SMS status:{}", tel, rsp.getBody());
 			if (rsp.getResult().getSuccess()) {
 				vo.setSuccess(true);
 				return vo;
 			} else {
-				LOG.error(tel+"短信发送失败:{}", rsp.getBody());
+				LOG.error(tel+"SMS failed:{}", rsp.getBody());
 			}
 		} catch (ApiException e) {
-			LOG.error(tel+"短信发送异常,API调用异常:{}",e);
+			LOG.error(tel+"Message sending exception,APICall exception:{}",e);
 		} catch (Exception e) {
-			LOG.error(tel+"短信发送异常:{}", e);
+			LOG.error(tel+"Message sending exception:{}", e);
 		}
 		return vo;
 	}
 
 	/**
-	 * 获取6位随机验证码.
+	 * Obtain6Bit random verification code.
 	 */
 	public static String getRandom6() {
 		Random random = new Random();
@@ -165,15 +165,15 @@ public class MessageSendUtil {
 	}
 
 	/**
-	 * 手机号验证
+	 * Cell phone number verification
 	 * @param  str
-	 * @return 验证通过返回true
+	 * @return Verify by returntrue
 	 */
 	public static boolean isMobile(String str) {
 		if (StringUtils.isEmpty(str) || str.length() != 11) {
 			return false;
 		}
-		Pattern p = Pattern.compile("^[1][3,4,5,7,8][0-9]{9}$"); // 验证手机号
+		Pattern p = Pattern.compile("^[1][3,4,5,7,8][0-9]{9}$"); // Verify phone number
 		Matcher m = p.matcher(str);
 		return m.matches();
 	}

@@ -5,31 +5,31 @@ import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 
 /**
- * 短信验证码基本数据.
+ * SMS verification code basic data.
  * @author Ken
- * @version 2016年8月18日
+ * @version 2016year8month18day
  */
 public class MessageMetaData {
 
 	private static final String URL = "http://gw.api.taobao.com/router/rest";
 	private static final String APPKEY = "23436123";
 	private static final String SECRET = "5c406f52c9fc657c5a5151944b4eef0e";
-	static final String SIGN = "沃博健康";
-	static final String OK = "短信发送成功";
-	static final String ERROR = "短信发送失败";
-	static final String ERROR_FREQ = "短信发送失败，请稍后再试！";
-	static final String ERROR_FREQ_DAY = "短信发送失败，号码短信发送超过限定条数！";
+	static final String SIGN = "ROBO health";
+	static final String OK = "SMS sent";
+	static final String ERROR = "SMS failed";
+	static final String ERROR_FREQ = "SMS failed，Please try later.！";
+	static final String ERROR_FREQ_DAY = "SMS failed，Number of text messages sent over the limit！";
 
 	/**
-	 * 获取发送短信对象.
+	 * Get send message object.
 	 */
 	static TaobaoClient getMessageClient() {
 		return new DefaultTaobaoClient(URL, APPKEY, SECRET);
 	}
 
 	/**
-	 * 获取发送短信request的对象.
-	 * @param tel 接受短信的号码.
+	 * Get send text messagesrequestObject.
+	 * @param tel Number to receive text messages.
 	 */
 	static AlibabaAliqinFcSmsNumSendRequest getRequest(String tel) {
 		AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
@@ -40,22 +40,22 @@ public class MessageMetaData {
 	}
 
 	/**
-	 * 注册.
+	 * register.
 	 * @author Ken
-	 * @version 2016年8月18日
+	 * @version 2016year8month18day
 	 */
 	interface register {
-		static final String FREESIGNNAME = "注册验证";
+		static final String FREESIGNNAME = "Registration verification";
 		static final String SMSTEMPLATECODE = "SMS_13180418";
 	}
 
 	/**
-	 * 修改密码
+	 * Change password
 	 * @author Ken
-	 * @version 2016年8月18日
+	 * @version 2016year8month18day
 	 */
 	interface resetPwd {
-		static final String FREESIGNNAME = "身份验证";
+		static final String FREESIGNNAME = "Authentication";
 		static final String SMSTEMPLATECODE = "SMS_13180416";
 	}
 

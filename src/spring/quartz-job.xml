@@ -7,26 +7,26 @@
 	   		
 	<bean id="runBatchContoller" class="com.net.nky.controller.RunBatchContoller">
 	</bean>
-    <!-- 定义调用对象和调用对象的方法 -->  
+    <!-- Method for defining calling object and calling object -->  
     <bean id="jobtask_runbatch" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
-        <!-- 调用的类 -->  
+        <!-- Class of call -->  
         <property name="targetObject">  
             <ref bean="runBatchContoller" />  
         </property> 
          
-        <!-- 调用类中的方法 -->  
+        <!-- Method in calling class -->  
         <property name="targetMethod">  
             <value>searchHospital</value>  
         </property>  
     </bean>
     
      
-    <!-- 查詢醫院科室和醫生触发时间 -->  
+    <!-- Query the hospital department and doctor trigger time -->  
     <bean id="doTime" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
         <property name="jobDetail">  
             <ref bean="jobtask_runbatch" />  
         </property>  
-        <!-- cron表达式  0 3 0 ? * * 0 0 12 * * ?-->  
+        <!-- cronExpression  0 3 0 ? * * 0 0 12 * * ?-->  
         <property name="cronExpression">
             <value>0 0 1 * * ?</value> 
         </property>  
@@ -35,12 +35,12 @@
     <bean id="cancelOrderContoller" class="com.net.nky.controller.cancelOrderContoller">
 	</bean>
     <bean id="cancelOrderTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
-        <!-- 调用的类 -->  
+        <!-- Class of call -->  
         <property name="targetObject">  
             <ref bean="cancelOrderContoller" />  
         </property> 
          
-        <!-- 调用类中的方法 -->  
+        <!-- Method in calling class -->  
         <property name="targetMethod">  
             <value>cancelOrder</value>  
         </property>  
@@ -49,20 +49,20 @@
         <property name="jobDetail">  
             <ref bean="cancelOrderTask" />  
         </property>  
-        <!-- cron表达式  0 3 0 ? * * 0 0 12 * * ?-->  
+        <!-- cronExpression  0 3 0 ? * * 0 0 12 * * ?-->  
         <property name="cronExpression">
             <value>0 0/15 * * * ?</value> 
         </property>  
     </bean> 
    	
-   	<!-- 视屏时间快到了提醒 -->
+   	<!-- Video call reminder -->
    	 <bean id="remoteRefuse" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
-        <!-- 调用的类 -->  
+        <!-- Class of call -->  
         <property name="targetObject">  
             <ref bean="remoteRefuseServiceImpl" />  
         </property> 
          
-        <!-- 调用类中的方法 -->  
+        <!-- Method in calling class -->  
         <property name="targetMethod">  
             <value>refuseTime</value>  
         </property>  
@@ -77,7 +77,7 @@
     </bean> 
    	
     
-    <!--总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+    <!--General management class If willlazy-init='false'Then the container will execute the scheduler  -->
     <bean id="startQuertz" lazy-init="false" autowire="no"  
         class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
         <property name="triggers">  

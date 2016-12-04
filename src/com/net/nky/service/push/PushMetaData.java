@@ -1,14 +1,14 @@
 package com.net.nky.service.push;
 
 /**
- * 消息推送的基本包.
+ * Message push basic package.
  * @author Ken
- * @version 2016年8月22日
+ * @version 2016year8month22day
  */
 public class PushMetaData {
 
-	/*确保使用的javaSE-1.6及兼容版本。 将libs和output下的jar包添加到工程路径。
-	 * 支持的域名为：“api.tuisong.baidu.com”，“api.push.baidu.com”。
+	/*Make sure to usejavaSE-1.6Compatible version。 takelibsandoutputUnder thejarPackage added to the engineering path。
+	 * Supported domain name：“api.tuisong.baidu.com”，“api.push.baidu.com”。
 	 */
 //	protected static final String API_ID = "4956964";
 	

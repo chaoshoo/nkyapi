@@ -3,24 +3,24 @@ package com.net.nky.service.msg;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * 短信发送返回.
+ * SMS return.
  * @author Ken
- * @version 2016年8月18日
+ * @version 2016year8month18day
  */
 public class MessageResultVo {
 
-	private boolean success; //是否发送成功
+	private boolean success; //Whether to send success
 
-	private String verifycode; //发送成功的验证吗
+	private String verifycode; //Send successful verification
 
-	private String message;//发送失败的原因，和发送成功时为：短信发送成功
+	private String message;//Causes of failure，And send success to：SMS sent
 
 	private MessageResultVo() {
 
 	}
 
 	/**
-	 * 短信发送成功构造类
+	 * SMS send success structure class
 	 * @param success
 	 * @param verifycode
 	 */

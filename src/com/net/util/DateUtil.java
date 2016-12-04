@@ -2,7 +2,7 @@ package com.net.util;
 
 
 /**
- * 获取时间戳
+ * Get time stamp
  * @author zw
  *
  */

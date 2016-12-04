@@ -35,13 +35,13 @@ public final class SysId {
 		return sysId;
 	}
 	
-	/**通过主键序列号定义表取得主键:SEQ_ID
+	/**Primary key is obtained from the primary key sequence number.:SEQ_ID
 	 * @throws Exception */
 	public Long getId() throws Exception {
 		return getSeq("SEQ_ID");
 	}
 
-	/**通过主键序列号定义表取得主键
+	/**Primary key is obtained from the primary key sequence number.
 	 * @throws Exception */
 	public Long getId(String seqName) throws Exception {
 		return getSeq(seqName);
@@ -72,7 +72,7 @@ public final class SysId {
 		Long id = nextSeq(seq, pk);
 		
 		if (log.isDebugEnabled()) {
-			log.debug("取得序列号(" + seqName + ")的值：" + id);
+			log.debug("Get serial number(" + seqName + ")The value of：" + id);
 		}
 		
 		return id;
@@ -98,7 +98,7 @@ public final class SysId {
 					seqEnd = end;
 //					log.debug("GET SEQ OUTPUT PARAMS !start = " + start + ";end= " + end + ";id= " + id);
 				} catch (Throwable t) {
-					throw new RuntimeException("取得序列号失败: " + seqName, t);
+					throw new RuntimeException("Failed to obtain serial number: " + seqName, t);
 				}
 			}
 			log.debug("GET SEQ OUTPUT PARAMS ! seqName = " + seqName + ",id= " + id +"start = " + seqStart + ",end= " + seqEnd );
@@ -136,7 +136,7 @@ public final class SysId {
 	}
 	
 	/**
-	 * 取医院的code
+	 * Take a hospitalcode
 	 * @return
 	 * @throws Exception
 	 */

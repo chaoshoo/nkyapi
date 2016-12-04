@@ -3,7 +3,7 @@ package com.net.nky.seq;
 import org.springframework.stereotype.Service;
 
 /**
- * 统一编码ID
+ * Uniform codingID
  * @author lenovo
  *
  */
@@ -20,7 +20,7 @@ public class IdCoderService {
 //	客户     Vxxxx
 //	
 	/**
-	 * 获取用户统一编码
+	 * Get user unified coding
 	 * @return
 	 * @throws Exception 
 	 */
@@ -32,7 +32,7 @@ public class IdCoderService {
 	
 	
 	/**
-	 * 获取系统用户编码
+	 * Acquisition system user code
 	 * @return
 	 * @throws Exception 
 	 */
@@ -44,7 +44,7 @@ public class IdCoderService {
 
 	
 	/**
-	 * 获取医院编码
+	 * Get hospital code
 	 * @return
 	 * @throws Exception 
 	 */
@@ -55,7 +55,7 @@ public class IdCoderService {
 	}
 	
 	/**
-	 * 获取医生编码
+	 * Get doctor code
 	 * @return
 	 * @throws Exception 
 	 */
@@ -65,7 +65,7 @@ public class IdCoderService {
 		return id;
 	}
 	/**
-	 * 获取供销商编码
+	 * Get the supply and marketing business code
 	 * @return
 	 * @throws Exception 
 	 */

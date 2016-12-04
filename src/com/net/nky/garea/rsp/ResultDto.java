@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * 查询接口封装类
+ * Query interface package class
  * @author yangling
  */
 public class ResultDto implements Serializable {

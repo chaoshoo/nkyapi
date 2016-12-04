@@ -3,9 +3,9 @@ package com.net.nky.garea.vo;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 /**
- * Ecg 配置.
+ * Ecg To configure.
  * @author Ken
- * @version 2016年9月23日
+ * @version 2016year9month23day
  */
 public class EcgConfig {
 

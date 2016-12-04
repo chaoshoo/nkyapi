@@ -11,9 +11,9 @@ import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
 /**
- * 短信缓存.注意配置是5分钟失效，而且验证码匹配上就失效，未匹配可以继续匹配.
+ * SMS cache.Note that the configuration is5Minute failure，And the verification code matching on the failure，Unmatched can continue to match.
  * @author Ken
- * @version 2016年8月19日
+ * @version 2016year8month19day
  */
 public class MessageCacheSingleton {
 
@@ -85,7 +85,7 @@ public class MessageCacheSingleton {
     static Cache phonegapCache = cacheManager.getCache("phonegap");
     static Cache phonedayCache = cacheManager.getCache("phoneday");
 
-    /** 获取getPhonegap中的code */
+    /** ObtaingetPhonegapIncode */
     public boolean getPhonegap(String tel) {
         if (phonegapCache != null) {
             phonegapCache.acquireReadLockOnKey(tel);
@@ -109,7 +109,7 @@ public class MessageCacheSingleton {
         return false;
     }
 
-    /** 获取getPhonegap中的code */
+    /** ObtaingetPhonegapIncode */
     public boolean getPhonedayCache(String tel) {
         if (phonedayCache != null) {
             phonedayCache.acquireReadLockOnKey(tel);
@@ -135,7 +135,7 @@ public class MessageCacheSingleton {
     }
 	
 
-    /** 获取cache中的code */
+    /** ObtaincacheIncode */
     public String getCacheVerifyCode(String tel) {
         Element element = null;
         if (varifyCache != null) {

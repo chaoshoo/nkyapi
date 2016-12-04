@@ -12,9 +12,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import com.net.nky.service.impl.PushMessageThread;
 
 /**
- *  Spring容器将所有的Bean都初始化完成之后再处理.
+ *  SpringContainers will be allBeanAre all initialized after the completion of re processing.
  * @author Ken
- * @version 2016年4月6日
+ * @version 2016year4month6day
  */
 public class ExecutePostProcessor implements ApplicationListener<ContextRefreshedEvent> {
 

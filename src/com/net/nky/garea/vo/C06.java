@@ -1,24 +1,24 @@
 package com.net.nky.garea.vo;
 
 /**
- * 尿常规 .
+ * Urine routine .
  * @author Ken
- * @version 2016年9月22日
+ * @version 2016year9month22day
  */
 public class C06 {
 
-	private String detectDate;//检测时间    时间格式字 符串
-	private Integer leu;//白细胞
-	private Integer nit;//亚硝酸盐
-	private Integer ubg;//尿胆原
-	private Float ph;//酸碱度
-	private Integer bld;//红细胞
-	private Integer glu;//葡萄糖
-	private Integer ket;//酮体
-	private Integer pro;//蛋白质
-	private Integer bil;//胆红素
-	private Integer vc;//维生素
-	private Float sg;//比重
+	private String detectDate;//Detection time    Time format character String
+	private Integer leu;//white blood cell
+	private Integer nit;//nitrite
+	private Integer ubg;//Urinary bladder
+	private Float ph;//Degree of acidity and alkalinity
+	private Integer bld;//Red blood cell
+	private Integer glu;//Glucose
+	private Integer ket;//Ketone
+	private Integer pro;//Protein
+	private Integer bil;//bilirubin
+	private Integer vc;//Vitamin
+	private Float sg;//proportion
 
 	public String getDetectDate() {
 		return detectDate;

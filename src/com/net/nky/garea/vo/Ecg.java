@@ -3,13 +3,13 @@ package com.net.nky.garea.vo;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 
 public class Ecg {
-	private String detectDate;//检测时间    时间格式字 符串
-	private Integer leadType;//2  导联类型  1:5 导联  2:12 导联
-	private Integer type;//1    心电类型   1: 急诊 2: 门诊 3: 住院  4: 体检
+	private String detectDate;//Detection time    Time format character String
+	private Integer leadType;//2  Lead type  1:5 lead  2:12 lead
+	private Integer type;//1    ECG type   1: Emergency treatment 2: Outpatient Department 3: Hospitalization  4: Physical examination
 	private String params;//,"94;64;91;36;164;122;336;420;1485;-1328;2815;1;102.0"
 	private String analyzeResult;//"9110;1100;7102;-1;-1;-1;-1;-1;-1;-1",
 	private String data;  //AFAATgBIAEIAPAA3ADAALQAqACoAKgArAC0ALgAxADMAMgAwACsAJwAl
-	private EcgConfig config;//心电配置  :{"highPassFilter":7,"lowPassFilter":5,"notchFilter":0},
+	private EcgConfig config;//ECG configuration  :{"highPassFilter":7,"lowPassFilter":5,"notchFilter":0},
 	private EcgRepBeat repBeat;
 
 	public String getDetectDate() {

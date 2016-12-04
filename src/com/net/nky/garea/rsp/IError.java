@@ -29,4 +29,3 @@ public interface IError {
 	void setExtDesc(String desc);
 
 }
-

@@ -81,7 +81,7 @@ public class HttpClient {
 		for (int i = 0; i < keys.size(); i++) {
 			String key = keys.get(i);
 			String value = map.get(key);
-			if (StringUtils.isNotEmpty(value)) {// 去除空值
+			if (StringUtils.isNotEmpty(value)) {// Removal of null
 				try {
 					prestr = prestr + "&" + key + "=" + java.net.URLEncoder.encode(value , "UTF-8");
 				} catch (UnsupportedEncodingException e) {
@@ -106,7 +106,7 @@ public class HttpClient {
 			connection.connect();
 			// 发送数据到服务器并使用Reader读取返回的数据 
 			 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(),"utf-8")); 
-			 String lines; //定义返回值
+			 String lines; //Define return value
 			 String result = "";
 			while ((lines = reader.readLine()) != null) {
 				result+=lines;
@@ -129,35 +129,35 @@ public class HttpClient {
 	 public static String doGet(String url, String charset)
 		      throws Exception {
 		    /*
-		     * 使用 GetMethod 来访问一个 URL 对应的网页,实现步骤: 1:生成一个 HttpClinet 对象并设置相应的参数。
-		     * 2:生成一个 GetMethod 对象并设置响应的参数。 3:用 HttpClinet 生成的对象来执行 GetMethod 生成的Get
-		     * 方法。 4:处理响应状态码。 5:若响应正常，处理 HTTP 响应内容。 6:释放连接。
+		     * Use GetMethod To access a URL Corresponding web page,Implementation steps: 1:Generate a HttpClinet Object and set the corresponding parameters。
+		     * 2:Generate a GetMethod Object and set the parameters of the response。 3:use HttpClinet Generated object to perform GetMethod GeneratedGet
+		     * Method。 4:Processing response status code。 5:If the response is normal，Handle HTTP Response content。 6:Release connection。
 		     */
-		    /* 1 生成 HttpClinet 对象并设置参数 */
+		    /* 1 generate HttpClinet Object and set parameters */
 		 org.apache.commons.httpclient.HttpClient httpClient = new org.apache.commons.httpclient.HttpClient();
 		    // 设置 Http 连接超时为5秒
 		    httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(5000);
-		    /* 2 生成 GetMethod 对象并设置参数 */
+		    /* 2 generate GetMethod Object and set parameters */
 		    GetMethod getMethod = new GetMethod(url);
 		    // 设置 get 请求超时为 5 秒
 		    getMethod.getParams().setParameter(HttpMethodParams.SO_TIMEOUT, 5000);
 		    // 设置请求重试处理，用的是默认的重试处理：请求三次
 		    getMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,	new DefaultHttpMethodRetryHandler());
 		    String response = "";
-		    /* 3 执行 HTTP GET 请求 */
+		    /* 3 implement HTTP GET request */
 		    try {
 		      int statusCode = httpClient.executeMethod(getMethod);
-		      /* 4 判断访问的状态码 */
+		      /* 4 Status code for judging access */
 		      if (statusCode != HttpStatus.SC_OK) {
-		        System.err.println("请求出错: "+ getMethod.getStatusLine());
+		        System.err.println("Request error: "+ getMethod.getStatusLine());
 		      }
-		      /* 5 处理 HTTP 响应内容 */
+		      /* 5 Handle HTTP Response content */
 		      // HTTP响应头部信息，这里简单打印
 		      Header[] headers = getMethod.getResponseHeaders();
 		      for (Header h : headers)
 		        System.out.println(h.getName() + "------------ " + h.getValue());
 		      // 读取 HTTP 响应内容，这里简单打印网页内容
-		      byte[] responseBody = getMethod.getResponseBody();// 读取为字节数组
+		      byte[] responseBody = getMethod.getResponseBody();// Read as an array of bytes
 		      response = new String(responseBody, charset);
 		      System.out.println("----------response:" + response);
 		      // 读取为 InputStream，在网页内容数据量大时候推荐使用
@@ -171,7 +171,7 @@ public class HttpClient {
 		      System.out.println("发生网络异常!");
 		      e.printStackTrace();
 		    } finally {
-		      /* 6 .释放连接 */
+		      /* 6 .Release connection */
 		      getMethod.releaseConnection();
 		    }
 		    return response;
@@ -207,14 +207,14 @@ public class HttpClient {
 				// 定义BufferedReader输入流来读取URL的响应
 
 				in = new BufferedReader(new InputStreamReader(
-						conn.getInputStream(), "UTF-8")); // 去掉了UTF-8
+						conn.getInputStream(), "UTF-8")); // Get rid ofUTF-8
 				String line;
 				while ((line = in.readLine()) != null) {
 					result += line;
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				throw new Exception("发送 POST 请求出现异常 !" + e);
+				throw new Exception("Send POST Request exception !" + e);
 			}
 			// 使用finally块来关闭输出流、输入流
 			finally {
@@ -228,7 +228,7 @@ public class HttpClient {
 
 				} catch (IOException ex) {
 					ex.printStackTrace();
-					throw new Exception("发送 POST 请求出现异常 !" + ex);
+					throw new Exception("Send POST Request exception !" + ex);
 				}
 			}
 			return result;
@@ -238,7 +238,7 @@ public class HttpClient {
 	 public static void main(String[] args) throws Exception {
 		String json=doGet("http://27.17.40.149:9000/hy_ghservice/centergh/jiami?miwen=abfdah", "utf-8");
 		System.out.println(json);
-		json=json.substring(json.indexOf("是\"")+4, json.length()-2);
+		json=json.substring(json.indexOf("yes\"")+4, json.length()-2);
 		System.out.println(json);
 		
 	}

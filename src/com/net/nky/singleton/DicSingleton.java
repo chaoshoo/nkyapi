@@ -17,7 +17,7 @@ import com.net.util.JsonUtil;
 import com.net.util.SpringUtil;
 
 /**
- * 下拉列表字典--单例模式
+ * Drop down list dictionary--Singleton pattern
  * 
  * @author yc 2011-3-28
  * @Version CECTManegeServer
@@ -41,7 +41,7 @@ public class DicSingleton {
 	}
 
 	/**
-	 * 加载数据
+	 * Load data
 	 */
 	private void loadData(int flag) {
 		if (flag == 0 && redisService.exists(Contants.KEY_DIC)) {
@@ -56,7 +56,7 @@ public class DicSingleton {
 	}
 
 	/**
-	 * 赋值
+	 * assignment
 	 */
 	public void setData() {
 		String sql = "select *  from  dic";
@@ -81,7 +81,7 @@ public class DicSingleton {
 	//	}
 
 	/**
-	 * 重新加载
+	 * Reload
 	 */
 	public void reloadData() {
 
@@ -89,7 +89,7 @@ public class DicSingleton {
 	}
 
 	/**
-	 * 根据type获取下拉列表
+	 * according totypeGets the drop - down list
 	 * 
 	 * @param type
 	 * @return
@@ -123,12 +123,12 @@ public class DicSingleton {
 	}
 
 	/**
-	 * 根据dic类型，加key值获取value
+	 * according todictype，pluskeyValue acquisitionvalue
 	 * 
 	 * @param dicType
-	 *            类型
+	 *            type
 	 * @param keyValue
-	 *            键值
+	 *            Key
 	 * @return huilet 2013-4-17
 	 * @author yuanc
 	 */

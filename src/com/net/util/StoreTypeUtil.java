@@ -8,7 +8,7 @@ public class StoreTypeUtil {
 	/**
 	 * 
 	 * @param dpId
-	 * @return 0:管理员  1：总店  2：分店 3：单店，后期再放入单利中
+	 * @return 0:Admin  1：Headquarters  2：Branch 3：Store，Add it in the late
 	 */
 	public static int getType(String dpId){
 		if("1".equals(dpId)){
@@ -32,7 +32,7 @@ public class StoreTypeUtil {
 		return 2;
 	}
 	/**
-	 * 通过分店dpid获取该分店的总店dpid
+	 * Through branchdpidThe branch officedpid
 	 * @param dpId
 	 * @return
 	 */

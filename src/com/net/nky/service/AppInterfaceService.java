@@ -3,9 +3,9 @@ package com.net.nky.service;
 import net.sf.json.JSONObject;
 
 /**
- * 接口服务类.
+ * Interface service class.
  * @author Ken
- * @version 2016年8月19日
+ * @version 2016year8month19day
  */
 public interface AppInterfaceService {
 	
@@ -19,122 +19,122 @@ public interface AppInterfaceService {
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27registMessage%27,%27tel%27:%2713367241859%27}
 	 * @param messageObj
-	 * @param result json:{"success":false,"message":"短信发送失败"}
+	 * @param result json:{"success":false,"message":"SMS failed"}
 	 */
 	void registmessage(JSONObject messageObj, JSONObject result);
 	
 	/**
-	 * 挂号短信.
-	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'ghmessage','tel':'13367241859','hospital':'同济','depart':'普珍','doctor':'郑医生','date':'2016-9-22','num':'2'}
+	 * Registered message.
+	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'ghmessage','tel':'13367241859','hospital':'Tongji','depart':'Zhen Pu','doctor':'Zheng doctor','date':'2016-9-22','num':'2'}
 	 */
 	void ghmessage(JSONObject messageObj, JSONObject result);
 	
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27pushmessage%27,%27title%27:%27abc%27,%27content%27:%27def%27,%27channeid%27:%27channeid%27}   
 	 * @param messageObj
-	 * @param result json:{"success":false,"message":"消息发送失败"}
+	 * @param result json:{"success":false,"message":"Message sending failed"}
 	 */
 	void pushmessage(JSONObject messageObj, JSONObject result);
 	
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27changepwdmessage%27,%27tel%27:%2713367241859%27}
 	 * @param messageObj
-	 * @param result  json:{"success":true,"message":"短信发送成功"}
+	 * @param result  json:{"success":true,"message":"SMS sent"}
 	 */
 	void changepwdmessage(JSONObject messageObj, JSONObject result);
 	
 	/**
 	 * localhost:8080/nkyapi/mobile/interface.do?content={'type':'checkmessage','tel':'13367241859','code':'123456'}
-	 * @param messageObj 其中包含2个参数  tel,code code为输入的验证码 
-	 * @param result   json:{"success":false,"message":"验证码验证失败"}
+	 * @param messageObj Which contains2One parameter  tel,code codeVerification code for input 
+	 * @param result   json:{"success":false,"message":"Verification code validation failed"}
 	 */
 	void checkmessage(JSONObject messageObj, JSONObject result);
 	
-	/**用户登陆
+	/**User login
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void userlogin(JSONObject messageObj, JSONObject result);
 	
-	/**用户注册
+	/**User registration
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:'useregist'}
 	 * @param messageObj
 	 * @param result
 	 */
 	void useregist(JSONObject messageObj, JSONObject result);
 	
-	/**医院查询
+	/**Hospital inquiry
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void hospitals(JSONObject messageObj, JSONObject result);
 	
-	/**科室查询
+	/**Department inquiry
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void offices(JSONObject messageObj, JSONObject result);
 	
-	/**医生查询
+	/**Doctor inquiry
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void doctors(JSONObject messageObj, JSONObject result);
 	
-	/**设备操作指南
+	/**Equipment operation guide
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void syspara(JSONObject messageObj, JSONObject result);
 	
-	/**消息列表
+	/**Message list
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void messagelist(JSONObject messageObj, JSONObject result);
 	
-	/**消息详情
+	/**Message details
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void messageinfo(JSONObject messageObj, JSONObject result);
 	
-	/**咨询录入
+	/**Consulting input
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void questionsave(JSONObject messageObj, JSONObject result);
 	
-	/**咨询回复录入
+	/**Advisory reply input
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void questionlogsave(JSONObject messageObj, JSONObject result);
 	
-	/**咨询列表
+	/**Consulting list
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void questionlist(JSONObject messageObj, JSONObject result);
 	
-	/**咨询详情
+	/**Consultation details
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void questioninfo(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询列表
+	/**Remote consultation list
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'remotelist','vip_id':'V10102'}
 	 * @param messageObj
@@ -142,35 +142,35 @@ public interface AppInterfaceService {
 	 */
 	void remotelist(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询详情
+	/**Remote consultation details
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void remoteinfo(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询录入
+	/**Remote consultation input
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void remotesave(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询取消
+	/**Remote consultation cancellation
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void remotecancel(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询录入
+	/**Remote consultation input
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
 	 */
 	void remotescoresave(JSONObject messageObj, JSONObject result);
 	
-	/**远程咨询录入
+	/**Remote consultation input
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={type:}
 	 * @param messageObj
 	 * @param result
@@ -180,7 +180,7 @@ public interface AppInterfaceService {
 	/**
 	 *  http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'measure','inspect_code':'C01','SYS':'137','DIA':'78','PR':'67','card_code':'420222198101010001','device_sn':'2131231321321','inspect_time':'2016-08-23 09:49:35'}
 	 *  
-	 * 指标检测
+	 * Index detection
 	 * @param messageObj
 	 * @param result
 	 */
@@ -188,7 +188,7 @@ public interface AppInterfaceService {
 
 	/**
 http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymeasuredatalist%27,%27inspect_code%27:%27C01%27,%27card_code%27:%27420222198101010001%27,page:%271%27}
-	 * 查询指标数据列表
+	 * Query index data list
 	 * @param messageObj
 	 * @param result
 	 */
@@ -224,9 +224,9 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	
 	/**
-	 * 查询医院 860270007
-	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'hospitalAllList','hosid':'0','rowstart':'0','rowcount':'0','hosname':'协和','flag':'0'}
-	 * * flag＝0表示从数据库查，搜索必须送0
+	 * Query hospital 860270007
+	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'hospitalAllList','hosid':'0','rowstart':'0','rowcount':'0','hosname':'Concord','flag':'0'}
+	 * * flag＝0From the database search，Search must be sent0
 	 * @param messageObj
 	 * @param result
 	 */
@@ -235,9 +235,9 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	 *  860270007 860270129
-	 * 查询科室
-	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'deptalllist','hosid':'860270007','rowstart':'1','rowcount':'300','deptname':'儿科','flag':'0'}
-	 * * flag＝0表示从数据库查，搜索必须送0
+	 * Query Department
+	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'deptalllist','hosid':'860270007','rowstart':'1','rowcount':'300','deptname':'Pediatrics','flag':'0'}
+	 * * flag＝0From the database search，Search must be sent0
 	 * @param messageObj
 	 * @param result
 	 */
@@ -245,12 +245,12 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	
 	/**
-	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctor','deptid':'4200270386','hosid':'860270129','rowstart':'0','rowcount':'20','docname':'张','flag':'0'}
-	 * flag＝0表示从数据库查，搜索必须送0
+	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctor','deptid':'4200270386','hosid':'860270129','rowstart':'0','rowcount':'20','docname':'Zhang','flag':'0'}
+	 * flag＝0From the database search，Search must be sent0
 	 * 4200270142
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctor','deptid':'4200270102','hosid':'860270007','rowstart':'0','rowcount':'20'}
 	 * 4200270115 
-	 * 查询医生
+	 * Query doctor
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctor','deptid':'4200270386','hosid':'860270129','rowstart':'0','rowcount':'20'}
 	 * @param messageObj
 	 * @param result
@@ -262,7 +262,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	 * 
 	 * 4200270102  861006747  860270007
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorschedule','deptid':'4200270102','docid':'861006747','hosid':'860270007','rowstart':'1','rowcount':'10'}
-	 * 查询排班
+	 * Query scheduling
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorschedule','deptid':'4200270386','docid':'861005481','hosid':'860270129','rowstart':'1','rowcount':'10'}
 	 * @param messageObj
 	 * @param result
@@ -274,7 +274,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	 * 
 	 * 
 	* http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'parttime','doctorno':'861006747','hosid':'860270007','rowcount':'0','rowstart':'0','scheduleid':'99246'}
-	 * 5.1.5 	查询分时排班
+	 * 5.1.5 	Query time scheduling
 	 * @param messageObj
 	 * @param result
 	 */
@@ -286,8 +286,8 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	 * 107755
 	* http://localhost:8080/nkyapi/mobile/interface.do?content=
 	* {'type':'ghlock','hosid':'860270007','partscheduleid':'411314','scheduleid':'100019','certtypeno':'1','idcard':'421002199102075015',
-	* 'patientname':'刘立','patientsex':'1','patientbirthday':'1991-02-07','contactphone':'18907183215','familyaddress':'武汉市东西湖新华医院','vipcode':'V1001','docid':'861000031','outpdate':'2016-09-10 AM','deptid':'4200271144'}
-	 * 5.1.6 	锁定号源
+	* 'patientname':'Liu','patientsex':'1','patientbirthday':'1991-02-07','contactphone':'18907183215','familyaddress':'Dongxihu Wuhan Xinhua Hospital','vipcode':'V1001','docid':'861000031','outpdate':'2016-09-10 AM','deptid':'4200271144'}
+	 * 5.1.6 	Lock signal source
 	 * @param messageObj
 	 * @param result
 	 */
@@ -295,7 +295,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	* http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'confirmorder','orderid':'2002454'}
-	 *5.1.7 	确认订单
+	 *5.1.7 	Confirm order
 	 * @param messageObj
 	 * @param result
 	 */
@@ -304,7 +304,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	* http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'cancelorder','cancelreason':'test2','operator':'13638631787','orderid':'2002286'}
-	 *5.1.8 	取消订单
+	 *5.1.8 	Cancel order
 	 * @param messageObj
 	 * @param result
 	 */
@@ -312,29 +312,29 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	  * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorstop','bstp':'0','estp':'0','hosid':'860270007','rowcount':'20','rowstart':'1'}
-	 * 5.1.9 	获取停诊订单
+	 * 5.1.9 	Get a stop order
 	 */
 	void doctorstop(JSONObject messageObj, JSONObject result);
 	/**
-	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'getghorderLst','orderId':'2002498','hosid':'860270007','patientname':'刘立','vipcode':'V2169','docid':'861000031','deptid':'4200271144','status':'1','pageIndex':'1','pageSize':'10'}
-	 * 5.1.9 	获取挂号订单列表
-	 * status  //1  锁号成功  2 确认成功  3 支付成功 4 支付失败 5 取消订单
+	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'getghorderLst','orderId':'2002498','hosid':'860270007','patientname':'Liu','vipcode':'V2169','docid':'861000031','deptid':'4200271144','status':'1','pageIndex':'1','pageSize':'10'}
+	 * 5.1.9 	Get a list of registered orders
+	 * status  //1  Locked success  2 Confirmed  3 Payed 4 Payment failed 5 Cancel order
 	 */
 	void getghorderlst(JSONObject messageObj, JSONObject result);
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'getwxpreOrder','orderid':'2002498','openid':'oenWDs0oFjJ1q6VuRk-Gr3W1eeOw'}
-	 * 5.1.9 	微信支付，预付订单
+	 * 5.1.9 	WeChat payment，Advance orders
 	 * 
 	 */
 	void getwxpreorder(JSONObject messageObj, JSONObject result);
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'getappversion'}
-	 * 5.1.9 	app版本
+	 * 5.1.9 	appVersion
 	 * 
 	 */
 	void getappversion(JSONObject messageObj, JSONObject result);
 	/**
-	 * 接触绑定
+	 * Contact binding
 	 * 
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'deletebind','vip_code':'V10607','vip_card':'429001198710264633','bind_account':'420106197702160011'}
 	 * @param messageObj
@@ -344,7 +344,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorlogin','tel':'V10607','password':'429001198710264633','android_tv_channel_id':'420106197702160011'}
-	 * 医生登录
+	 * Doctor login
 	 * @param messageObj
 	 * @param result
 	 */
@@ -352,7 +352,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	 *  http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorremotelist','doctor_code':'V10607'}
-	 * 医生视频列表
+	 * Doctor video list
 	 * @param messageObj
 	 * @param result
 	 */
@@ -360,7 +360,7 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	/**
 	 * http://localhost:8080/nkyapi/mobile/interface.do?content={'type':'doctorremotewychannel','remote_inspect_id':'V10607','channel_id':'V10607'}
-	 * 医生发起视频回填房间号  并push 消息给vip
+	 * Doctor initiated video back room number  andpush Message tovip
 	 * @param messageObj
 	 * @param result
 	 */
@@ -368,28 +368,28 @@ http://localhost:8080/nkyapi/mobile/interface.do?content={%27type%27:%27querymea
 	
 	
 	/**
-	 * 远程视频 结束回调
+	 * Remote video End callback
 	 * @param messageObj
 	 * @param result
 	 */
 	void doctorexitvedio(JSONObject messageObj, JSONObject result);
 
 	/**
-	 * 获取视频用到的token
+	 * Get used to the videotoken
 	 * @param messageObj
 	 * @param result
 	 */
 	void getvediotoken(JSONObject messageObj, JSONObject result);
 	
 	/**
-	 * 创建房间
+	 * Create room
 	 * @param messageObj
 	 * @param result
 	 */
 	void makechannelname(JSONObject messageObj, JSONObject result);
 	
 	/**
-	 * 创建房间
+	 * Create room
 	 * @param messageObj
 	 * @param result
 	 */

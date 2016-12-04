@@ -1,12 +1,12 @@
 package com.net.nky.garea.vo;
 
 /**
- * 血氧
+ * Oxygen
  * @author Ken
- * @version 2016年9月21日
+ * @version 2016year9month21day
  */
 public class C05 {
-	private String detectDate;//检测时间    时间格式字 符串
+	private String detectDate;//Detection time    Time format character String
 	private Integer pr;// 
 	private Integer spo2;// 
 	//{"detectDate":"2016-09-21 15:54:54","pr":77,"spo2":99}

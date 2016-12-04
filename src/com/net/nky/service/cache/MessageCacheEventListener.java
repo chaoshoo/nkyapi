@@ -9,9 +9,9 @@ import net.sf.ehcache.Element;
 import net.sf.ehcache.event.CacheEventListener;
 
 /**
- * 缓存事件.
+ * Cache event.
  * @author Ken
- * @version 2016年8月19日
+ * @version 2016year8month19day
  */
 public class MessageCacheEventListener implements CacheEventListener {
 
